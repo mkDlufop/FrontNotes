@@ -1,3 +1,6 @@
+# Vue 面试题
+
+## Vue 核心
 
 使用 Object.defineProperty() 来进行数据劫持有什么缺点？
 
@@ -24,3 +27,79 @@ v-if 和 v-show 的区别？
 - 使用场景
 
   v-if 适合不大可能改变；v-show 适合频繁切换
+
+## Vue Router
+
+## 路由传参
+
+- 路由传递参数（对象写法） path 是否可以结合 params 参数一起使用？ 即：
+  `this.$router.push({ path: '/search', params: { keyword: this.keyword }, query: { k: this.keyword.toUpperCase() }, });`
+
+  > 答：报错，不能。
+- 如何指定 params 参数 可传可不传？ 即：
+
+  `this.$router.push({ name: "search", query: { k: this.keyword.toUpperCase() }, });`
+
+  > 答：配置路由时，path 上加个 ? 号，代表可传参数也可不传；若不加 ? ，则 URL 会出现问题。
+  >
+  > ```js
+  > {
+  >   path: "/search/:keyword?",
+  >   component: Search,
+  >   meta: {show:true},
+  >   // 对象形式路由传递参数
+  >   name: "search",
+  > },
+  > ```
+
+- params 参数 可以传递也可以不传递，但是如果传递是空串，如何解决？ 即：
+   `this.$router.push({name:"search",params:{keyWord:''},query:{k:this.keyWord}})`
+  > 答：可以使用 undefined 来解决 params 参数可以传递也可不传递（空的字符串）
+  >
+  > ```js
+  > this.$router.push({
+  >   name: "search",
+  >   params: { keyword: '' || undefined },
+  >   query: { k: this.keyword.toUpperCase() },
+  > });
+  > ```
+
+- 路由组件能不能传递 props 数据？
+  > 可以。三种写法：
+  >
+  > ```js
+  > {
+  >   path: "/search/:keyword",
+  >   component: Search,
+  >   meta: { show: true },
+  >   // 对象形式路由传递参数
+  >   name: "search",
+  >   // 路由组件能不能传递 props 数据？
+  >   // 1、布尔值写法，但是这种方法只能传递 params 参数
+  >   // props: true,
+  >   // 2、对象写法：额外给路由组件传递一些 props
+  >   // props: { a: 1, b: 2 },
+  >   // 函数写法（常用）: 可以 params 参数、query 参数，通过 props 传递给路由组件
+  >   props: ($route) => {
+  >       return {keyword: $route.params.keyword, k: $route.query.k};
+  >   }
+  > },
+  > ```
+  >
+  > ```html
+  > <template>
+  >   <div>
+  >     <h1>params 参数---{{ $route.params.keyword }}</h1>
+  >     <h1>query 参数---{{ $route.query.k }}</h1>
+  >     <h1>props 数据---{{ keyword }}</h1>
+  >     <!-- <h1>props 数据---{{ a }}--{{ b }}</h1> -->
+  >   </div>
+  > </template>
+  > 
+  > <script>
+  > 
+  > export default { 
+  >   name: '',
+  >   props: ['keyword', 'a', 'b'],
+  > }
+  > ```
