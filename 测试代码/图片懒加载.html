@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>图片懒加载</title>
+</head>
+
+<body>
+  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+
+  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <script>
+    let imgs = [...document.querySelectorAll('img')];
+    let removedImgs = [];
+
+    /* 实现图片懒加载（方法一）*/
+    let lazyLoad = function () {
+      imgs.forEach((img) => {
+        /*
+        // 判断图片是否在可视区域内（使用 offsetTop、scrollTop、innerHeight）
+        // 获取视口区域的滚动高度
+  let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        // 获取浏览器窗口的视口高度
+  let innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+if(img.offsetTop < scrollTop + innerHeight) {
+            img.src = img.getAttribute('data-imgsrc');
+            removedImgs.push(img);
+}
+        */
+
+        // 判断图片是否在可视区域内（使用 getBoundingClientRect ）
+        // getBoundingClientRect()方法返回一个 DOMRect 对象，其提供了元素的大小及其相对于视口的位置。
+        let rect = img.getBoundingClientRect();
+        let innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        if (rect.top < innerHeight) {
+          img.src = img.getAttribute('data-imgsrc');
+          removedImgs.push(img);
+        }
+      });
+      // 加载完成的图片，从 imgs 中移除
+      imgs = imgs.filter((v, index) => !removedImgs.includes(v));
+      if (imgs.length === 0) {
+        // 图片全部加载完成后移除事件监听
+        document.removeEventListener('scroll', lazyLoad);
+      }
+    };
+    // window.onscroll = lazyLoad;
+    // document.addEventListener('scroll', lazyLoad);
+
+    /* 实现图片懒加载（方法二）
+        Intersection Observer可以不用监听scroll事件，
+        做到元素一可见便调用回调，在回调里面我们来判断元素是否可见。
+    */
+    if ("IntersectionObserver" in window) {
+      let lazyImgObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          // 如果元素可见
+          if (entry.isIntersecting) {
+            let img = entry.target;
+            let src = img.dataset.imgsrc;
+            if (src) {
+              img.src = src;
+              img.removeAttribute('data-imgsrc');
+            }
+            observer.unobserve(entry.target);
+          }
+        })
+      });
+      imgs.forEach((img) => {
+        lazyImgObserver.observe(img);
+      })
+    }
+  </script>
+</body>
+
+</html>

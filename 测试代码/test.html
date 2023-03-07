@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>css</title>
+	<!-- 在这里用link标签引入中文渐变色 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chinese-gradient">
+	<style>
+		html {
+			background-color: #00539F;
+		}
+
+		body {
+			width: 600px;
+			margin: 0 auto;
+			background-color: #FF9500;
+			padding: 0 20px 20px 20px;
+			border: 5px solid black;
+		}
+
+		h1 {
+			margin: 0;
+			padding: 20px 0;
+			color: #00539F;
+			text-shadow: 3px 3px 1px black;
+		}
+
+		p::first-line {
+			background: red;
+		}
+
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		ul {
+			width: 100px;
+			height: 100px;
+			list-style: none;
+			display: table;
+			border-spacing: 3px;
+		}
+
+		li {
+			display: table-row;
+		}
+
+		li>div {
+			display: table-cell;
+			background: var(--湖蓝);
+		}
+
+		.testFont {
+			font-size: 40px;
+			height: 200px;
+			background-color: skyblue;
+			line-height: 200px;
+		}
+
+		.testFont span {
+			background-color: orange;
+			vertical-align: middle;
+		}
+
+		.testFont img {
+			height: 50px;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="testFont">
+		gxf好
+		<span>
+			gxf好
+		</span>
+		<img src="../images/css/line.png" />
+	</div>
+	<h1>测试CSS</h1>
+	<p>123abc123abc123abc123abc123abc123abc123abc123abc123abc123abc123abc123abc
+		456</p>
+	<div>
+		<p>
+			<img style="background:blue;width:50px;height:50px;float:left;" />1234567890
+		</p>
+		<p>
+			<img style="background:blue;width:50px;height:50px;float:left;" />1123456789023
+		</p>
+	</div>
+	<img src="../images/heap_memory.png" data-imgsrc="../images/defer_async.png" />
+	<img src="../images/heap_memory.png" data-imgsrc="../images/defer_async.png" />
+	<ul>
+		<li>
+			<div></div>
+			<div></div>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+			<div></div>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+			<div></div>
+			<div></div>
+		</li>
+	</ul>
+	<script>
+		// 统计网页上出现了多少种标签
+		let allTag = new Set([...document.querySelectorAll('*')].map(e => e.tagName));
+
+		// 图片懒加载
+		let imgs = document.querySelectorAll('img[data-imgsrc]');
+		window.onscroll = lazyLoad;
+		function lazyLoad() {
+			const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+			const innerHeight = window.innerHeight;
+			console.log('imgs.length:' + imgs.length);
+			for (let i = 0; i < imgs.length; i++) {
+				console.log(imgs[i].offsetTop + '<' + scrollTop + '+' + innerHeight);
+				if (imgs[i].offsetTop < scrollTop + innerHeight) {
+					console.log(imgs[i].offsetTop + '<' + scrollTop + '+' + innerHeight);
+					imgs[i].src = imgs[i].getAttribute('data-imgsrc');
+				}
+			}
+		}
+		// window.addEventListener('scroll', lazyLoad);
+	</script>
+	<!-- <script type="module" src="./js/debounce.js"></script> -->
+</body>
+
+</html>
