@@ -76,11 +76,16 @@ var 和 let 之间最明显的区别在于作用域不同。
 
 let 和 const 的行为基本相同，唯一一个重要的区别在于 const 声明变量时必须同时初始化变量，且尝试修改 const 声明的变量时会导致运行时错误。
 
-|  | 作用域 | 兼容性 | 变量提升 | 全局变量 | 声明变量时必须同时初始化变量 | 能否重复声明变量 |
-| --- | --- | --- | --- | --- | --- | --- |
-| var | 函数 | 适用于 ECMAScript 的所有版本 | 有 | 在全局作用域中声明的变量会成为 window 对象的属性，<br />eg:<br />var name = 'Matt';<br />console.log(window.name);<br />// 'Matt'<br />let age = 26;<br />console.log(window.age);<br />// undefined |否| 可以重复声明变量，后声明的同名变量会覆盖之前声明的变量 |
-| let | 块 | 适用于 ES6 及之后的所有版本 | 无 | 不会 | 否 | 不能 |
-| const | 块 | 适用于 ES6 及之后的所有版本 | 无 | 不会 | 是 | 不能 |
+| | var | let | const |
+| - | - | - | - |
+| 作用域 | 函数 | 块 | 块 |
+| 兼容性 | 适用于 ECMAScript 的所有版本 | 适用于 ES6 及之后的所有版本 | 适用于 ES6 及之后的所有版本 |
+| 变量提升 | var 命令会发生“变量提升”现象，<br />即变量可以在声明之前使用，值为 undefined 。<br />示例：<br />`console.log(foo);`<br />`var foo = 2;`<br />// undefined | 不存在<br />示例：<br />`console.log(bar);`<br />`let bar = 2;`<br />// 报错 ReferenceError | 不存在 |
+| 暂时性死区 | 不存在 | 在块作用域内，使用let命令声明变量之前，该变量都是不可用的，在声明之前使用这些变量会报错。这在语法上，称为“暂时性死区”（temporal dead zone，简称 TDZ）。 | 存在 |
+| 全局变量 | 在全局作用域中声明的变量会成为 window 对象的属性，<br />例如：<br />var name = 'Matt';<br />console.log(window.name);<br />// 'Matt'<br />let age = 26;<br />console.log(window.age);<br />// undefined | 不会 | 不会  |
+| 声明变量时初始化变量 | 否 | 否 | 声明变量时必须同时初始化变量 |
+| 重复声明变量 | 可以重复声明变量，后声明的同名变量会覆盖之前声明的变量 | 不能 | 不能 |
+| 顶层变量的属性 | 命令声明的全局变量属于顶层对象的属性 | 不属于 | 不属于 |
 
 ### 数据类型
 
@@ -307,7 +312,8 @@ JavaScript 对 UTF-16 的支持是不完整的，由于历史原因，只支持�
 
   - Object 常用方法
 
-    - `Object.assign(target, ...sources)`：Object.assign() 方法将所有可枚举（Object.propertyIsEnumerable() 返回 true）的自有（Object.hasOwnProperty() 返回 true）属性从一个或多个源对象复制到目标对象，返回修改后的对象。
+    - `Object.assign(target, ...sources)`：Object.assign() 方法将所有可枚举（`Object.propertyIsEnumerable()` 返回 true）的自有（`Object.hasOwnProperty()` 返回 true）属性从一个或多个源对象复制到目标对象，返回修改后的对象。
+       （第一层为深拷贝，第二层为浅拷贝。）
 
        ```js
        const target = { a: 1, b: 2 };
