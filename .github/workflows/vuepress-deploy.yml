@@ -1,0 +1,23 @@
+name: vuepress deploy
+
+# 在 main 分支发生 push 事件时触发
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy: # 自定义名称
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout # 步骤一
+        uses: actions/checkout@master # 使用的动作。格式：userName/repoName。该动作的作用：检出仓库，获取源码。
+
+      - name: vuepress-deploy # 步骤二
+        uses: jenkey2011/vuepress-deploy@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          TARGET_REPO: mkDlufop/FrontNotes # 目标仓库，默认当前仓库。
+          TARGET_BRANCH: gh-pages # 目标仓库的分支，默认 gh-pages。
+          BUILD_SCRIPT: yarn && yarn docs:build
+          BUILD_DIR: docs/.vuepress/dist
