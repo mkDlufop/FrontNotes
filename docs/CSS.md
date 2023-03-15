@@ -1,28 +1,8 @@
-- [一、css 的语法](#一 css 的语法)
-- [二、选择器](#二选择器)
-- [三、CSS 属性](#三 css 属性)
-  - [字体属性](#字体属性)
-  - [文本属性](#文本属性)
-  - [背景属性](#背景属性)
-  - [CSS3 新属性](#css3 新属性)
-  - [单位](#单位)
-    - [长度](#长度)
-    - [颜色](#颜色)
-    - [字体](#字体)
-- [四、CSS 特性](#四 css 特性)
-- [五、元素类型转换及显示/隐藏](#五元素类型转换及显示隐藏)
-- [六、布局](#六布局)
-  - [盒子模型](#盒子模型)
-    - [块内元素的盒模型](#块内元素的盒模型)
-    - [内联元素的盒模型](#内联元素的盒模型)
-  - [文档流](#文档流)
-  - [浮动](#浮动)
-    - [浮动](#浮动-1)
-    - [清除浮动](#清除浮动)
-  - [定位](#定位)
-  - [Flex 布局 12](#flex 布局 12)
-
-[TOC]
+---
+title: CSS
+permalink: /css
+---
+[[TOC]]
 
 # 一、css 的语法
 
@@ -406,7 +386,7 @@ css 的语法：
   - `border-radius`：设置圆角。同时 border-radius 接受水平和垂直方向不同值，使用斜杠 (/) 来分隔它们，如：`border-radius: 50% / 50%;`。
 
     分别指定了 4，3，2 或 1 个值的 border-radius 属性（用空格分隔）对应的图如下。（注意椭圆的半径，斜杠前后都可以达到四个值，它们指的都是相同的角，斜杠前的是水平半径，斜杠后的是垂直半径）。
-    ![border-radius](images/css/border-radius.png)
+    ![border-radius](https://gitee.com/sc2pampers/ImgUrl/raw/master/images/css/border-radius.png)
 
 ## 单位
 
@@ -839,7 +819,7 @@ Flex 是 Flexible Box 的缩写，意为"弹性布局“，用为盒状模型提
 
 需要注意的是，**设为 Flex 布局以后，子元素的 float、clear 和 vertical-align 属性将失效。**
 
-![flex_basis](./images/css/flex_basis.png)
+![flex_basis](https://gitee.com/sc2pampers/ImgUrl/raw/master/images/css/flex_basis.png)
 
 采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
 
