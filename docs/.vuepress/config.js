@@ -9,14 +9,23 @@ module.exports = {
   themeConfig: {
     // 导航栏配置
     nav: [
-      { text: 'HTML', link: '/html' },
-      { text: 'CSS', link: '/css' },
+      { text: 'HTML', link: '/html/' },
+      { text: 'CSS', link: '/css/' },
       {
         text: 'JS',
-        link: '/js',
         items: [
-          { text: 'Group1', link: '/g1' },
-          { text: 'Group2', link: '/g2' }
+          { text: 'ECMAScript', link: '/js_ecmascript/' },
+          { text: 'DOM', link: '/js_dom/' },
+          { text: 'BOM', link: '/js_bom/' }
+        ]
+      },
+      {
+        text: 'Vue',
+        items: [
+          { text: 'Vue 基础', link: '/vue_base/' },
+          { text: 'Vuex', link: '/vue_vuex/' },
+          { text: '路由', link: '/vue_router/' },
+          { text: 'Vue CLI', link: '/vue_cli/' },
         ]
       },
       { text: 'GitHub', link: 'https://github.com/mkDlufop/FrontNotes' },
