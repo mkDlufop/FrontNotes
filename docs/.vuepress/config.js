@@ -28,6 +28,14 @@ module.exports = {
           { text: 'Vue CLI', link: '/vue_cli/' },
         ]
       },
+      { text: '浏览器', link: '/browser/' },
+      { text: '计算机网络', link: '/computer_network/' },
+      {
+        text: '最佳实践',
+        items: [
+          { text: '用户界面优化', link: '/ui_optimize/' },
+        ]
+      },
       { text: 'GitHub', link: 'https://github.com/mkDlufop/FrontNotes' },
     ],
     // 侧边栏配置
