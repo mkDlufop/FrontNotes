@@ -36,6 +36,16 @@ module.exports = {
           { text: '用户界面优化', link: '/ui_optimize/' },
         ]
       },
+      {
+        text: '面试题',
+        items: [
+          { text: '面试题_HTML', link: '/interview_questions_HTML/' },
+          { text: '面试题_CSS', link: '/interview_questions_CSS/' },
+          { text: '面试题_JS', link: '/interview_questions_JS/' },
+          { text: '面试题_Vue', link: '/interview_questions_Vue/' },
+          { text: '面试题_计算机网络', link: '/interview_questions_network/' },
+        ]
+      },
       { text: 'GitHub', link: 'https://github.com/mkDlufop/FrontNotes' },
     ],
     // 侧边栏配置

@@ -1,4 +1,7 @@
-# Vue 面试题
+---
+title: 面试题_Vue
+permalink: /interview_questions_Vue/
+---
 
 ## Vue 核心
 

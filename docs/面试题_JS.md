@@ -1,3 +1,8 @@
+---
+title: 面试题_JS
+permalink: /interview_questions_JS/
+---
+
 ### 数据类型
 
 1，`Object.is(value1, value2)` 与比较操作符 “ === ”、” == “ 的区别？

@@ -1,4 +1,7 @@
-#
+---
+title: 面试题_HTML
+permalink: /interview_questions_HTML/
+---
 
 1. src 和 href 的区别
 
@@ -36,11 +39,11 @@
 
       2. video
 
-         - ```html
-           <video src='' poster='imgs/aa.jpg' controls></video>
-           ```
+         ```html
+          <video src='' poster='imgs/aa.jpg' controls></video>
+          ```
 
-         - 因为浏览器对视频格式支持程度不一样，为了能够兼容不同的浏览器，可以通过 source 来指定视频源。
+         因为浏览器对视频格式支持程度不一样，为了能够兼容不同的浏览器，可以通过 source 来指定视频源。
 
    3. 表单
 
@@ -93,9 +96,9 @@
 
 6. 行内元素有哪些？块级元素有哪些？ 空 (void) 元素有那些？
 
-   1. 块级元素：div、h1~h6、p、ul、li、ol、dl、dt、dd、header、nav、artical、section、aside、footer
-   2. 行内元素：span、a、img、input、strong、em、del、ins
-   3. 空元素（即没有内容的 HTML 元素。空元素没有闭合标签）：img、input、br、hr、link、meta
+   - 块级元素：div、h1~h6、p、ul、li、ol、dl、dt、dd、header、nav、artical、section、aside、footer
+   - 行内元素：span、a、img、input、strong、em、del、ins
+   - 空元素（即没有内容的 HTML 元素。空元素没有闭合标签）：img、input、br、hr、link、meta
 
 7. html 与 XML
 
