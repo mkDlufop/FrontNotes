@@ -819,7 +819,7 @@ Flex 是 Flexible Box 的缩写，意为"弹性布局“，用为盒状模型提
 
 需要注意的是，**设为 Flex 布局以后，子元素的 float、clear 和 vertical-align 属性将失效。**
 
-![flex_basis](/FrontNotes/images/css/flex_basis.png)
+![flex_basis](./images/css/flex_basis.png)
 
 采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
 
