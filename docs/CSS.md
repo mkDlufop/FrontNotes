@@ -386,7 +386,7 @@ css 的语法：
   - `border-radius`：设置圆角。同时 border-radius 接受水平和垂直方向不同值，使用斜杠 (/) 来分隔它们，如：`border-radius: 50% / 50%;`。
 
     分别指定了 4，3，2 或 1 个值的 border-radius 属性（用空格分隔）对应的图如下。（注意椭圆的半径，斜杠前后都可以达到四个值，它们指的都是相同的角，斜杠前的是水平半径，斜杠后的是垂直半径）。
-    ![border-radius](https://gitee.com/sc2pampers/ImgUrl/raw/master/images/css/border-radius.png)
+    ![border-radius](/FrontNotes/images/css/border-radius.png)
 
 ## 单位
 
@@ -819,7 +819,7 @@ Flex 是 Flexible Box 的缩写，意为"弹性布局“，用为盒状模型提
 
 需要注意的是，**设为 Flex 布局以后，子元素的 float、clear 和 vertical-align 属性将失效。**
 
-![flex_basis](https://gitee.com/sc2pampers/ImgUrl/raw/master/images/css/flex_basis.png)
+![flex_basis](/FrontNotes/images/css/flex_basis.png)
 
 采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
 
