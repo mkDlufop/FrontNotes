@@ -49,7 +49,6 @@ module.exports = {
       { text: 'GitHub', link: 'https://github.com/mkDlufop/FrontNotes' },
     ],
     // 侧边栏配置
-    sidebar: [
-    ]
+    sidebar: 'auto',
   }
 }
