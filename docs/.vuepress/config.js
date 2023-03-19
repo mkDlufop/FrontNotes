@@ -34,6 +34,7 @@ module.exports = {
         text: '最佳实践',
         items: [
           { text: '用户界面优化', link: '/ui_optimize/' },
+          { text: '性能优化', link: 'performance_optimize' },
         ]
       },
       {
