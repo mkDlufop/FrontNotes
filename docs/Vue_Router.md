@@ -12,7 +12,7 @@ permalink: /vue_router/
 
 ### 基本使用
 
-  1. 安装 vue-router，命令：`npm i vue-router`
+  1. 安装 vue-router：`npm i vue-router`
   2. 应用插件：`Vue.use(VueRouter)`
   3. 编写 router 配置项：
 
@@ -45,13 +45,13 @@ permalink: /vue_router/
      export default router
      ```
 
-  4. 实现切换（active-class 可配置高亮样式）
+  4. 实现切换（active-class 可配置高亮样式）：
 
      ```html
      <router-link active-class="active" to="/about">About</router-link>
      ```
 
-  5. 指定展示位置
+  5. 指定展示位置：
   
      ```html
      <router-view></router-view>
@@ -94,7 +94,7 @@ permalink: /vue_router/
      ]
      ```
   
-  2. 跳转（要写完整路径）
+  2. 跳转（要写完整路径）：
   
      ```html
      <router-link to="/home/news">News</router-link>
@@ -102,7 +102,7 @@ permalink: /vue_router/
 
 ### 路由的 query 参数
 
-  1. 传递参数
+  1. 传递参数：
   
      ```html
      <!-- 跳转并携带 query 参数，to 的字符串写法 -->
@@ -120,7 +120,7 @@ permalink: /vue_router/
      >跳转</router-link>
      ```
   
-  2. 接受参数
+  2. 接受参数：
   
      ```js
      $route.query.id
@@ -129,11 +129,11 @@ permalink: /vue_router/
 
 ### 命名路由
 
-  1. 作用：可以简化路由的跳转
+  1. 作用：可以简化路由的跳转。
   
-  2. 如何使用
+  2. 如何使用。
 
-     1. 给路由命名
+     1. 给路由命名：
 
          ```js
          {
@@ -178,7 +178,7 @@ permalink: /vue_router/
 
 ### 路由的 params 参数
 
-  1. 配置路由，声明接受 params 参数
+  1. 配置路由，声明接受 params 参数：
   
      ```js
      {
@@ -204,7 +204,7 @@ permalink: /vue_router/
      }
      ```
   
-  2. 传递参数
+  2. 传递参数：
   
      ```html
      <!-- 跳转并携带 params 参数，to 的字符串写法 -->
@@ -224,20 +224,20 @@ permalink: /vue_router/
 
      **特别注意：路由携带`params`参数时，若使用`to`的对象写法，则不能使用`path`配置项，必须使用`name`配置！**
   
-  3. 接受参数
+  3. 接受参数：
   
      ```js
      $route.params.id
      $route.params.title
      ```
   
-     params 和 query 的区别
-        - params 参数：属于路径当中的一部分，在配置路由的时候，需要占位
-        - query 参数：不属于路径当中的一部分，类似于 ajax 中的 queryString，不需要占位
+     params 和 query 的区别：
+        - params 参数：属于路径当中的一部分，在配置路由的时候，需要占位。
+        - query 参数：不属于路径当中的一部分，类似于 ajax 中的 queryString，不需要占位。
 
 ### 路由的 props 配置
 
-作用：让路由组件更方便的收到参数
+作用：让路由组件更方便的收到参数。
 
 ```js
 {
@@ -273,7 +273,7 @@ props: ['id', 'title'],
 
   2. 浏览器的历史记录有两种写入方式：分别为`push`和`replace`，`push`是追加历史记录，`replace`是替换当前记录，路由跳转时候默认为`push`。
 
-  3. 开启`replace`模式：`<router-link replace … >News</router-link>`
+  3. 开启`replace`模式：`<router-link replace … >News</router-link>`。
 
 ### 编程式路由导航
 
@@ -333,9 +333,9 @@ props: ['id', 'title'],
 
   1. 作用：对路由进行权限控制。
   
-  2. 分类：全局守卫、路由独享的守卫、组件内的守卫
+  2. 分类：全局守卫、路由独享的守卫、组件内的守卫。
   
-  3. 全局守卫
+  3. 全局守卫：
   
      ```js
      // 全局前置守卫，初始化时执行，每次路由切换前执行
@@ -361,7 +361,7 @@ props: ['id', 'title'],
      })
      ```
   
-  4. 路由独享的守卫
+  4. 路由独享的守卫：
   
      ```js
      children:[
@@ -385,7 +385,7 @@ props: ['id', 'title'],
      ]
      ```
   
-  5. 组件内守卫
+  5. 组件内守卫：
   
      ```js
      methods: {
@@ -429,47 +429,3 @@ props: ['id', 'title'],
      2. 兼容性和 hash 模式相比略差。
   
      3. 应用部署上线时需要后端人员支持，解决刷新页面服务器 404 的问题。
-
-## 使用 Vue CLI
-
-### **关于不同版本的 Vue:**
-
-1. vue.js 与 vue.runtime.xxx.js 的区别：
-
-    （1）.vue.js 是完整版的 Vue，包含：核心功能+模板解析器
-    （2）.vue.runtime.xxx.js 是运行版的 Vue，只包含：核心功能；没有模板解析器。
-
-2. 因为 vue.runtime.xxx.js 没有模板解析器，所以不能使用 template 配置项，需要使用 render 函数接收到的 createElement 函数去指定具体内容。
-
-### vue.config.js 配置文件
-
-1. 使用`vue inspect > output.js`可以查看到 Vue 脚手架的默认配置。
-
-2. 使用 vue.config.js 可以对脚手架进行个性化定制。
-
-### 总结 TodoList 案例
-
-1. 组件化编码流程：
-
-    1. 拆分静态组件：组件要按照功能点拆分，命名不要与 html 元素冲突。
-    2. 实现动态组件：考虑好数据的存放位置，数据是一个组件在用，还是一些组件在用：
-        - （1）一个组件在用：放在组件自身即可。
-        - （2）一些组件在用：放在他们共同的父组件上（状态提升）。
-    3. 实现交互：从绑定事件开始。
-
-2. 使用 v-model 时要切记：v-model 绑定的值不能是 props 传过来的值，因为 props 是不可以修改的。
-
-### nextTick
-
-1. 语法：`this.$nextTick（回调函数）`
-
-2. 作用：在下一次 DOM 更新结束后执行其指定的回调
-
-3. 什么时候用：当改变数据后，要基于更新后的新 DOM 进行某些操作时，要在 nextTick 所指定的回调函数中执行。
-
-## 注意事项
-
-|  | vuex（默认版本 4) | vue-router（默认版本 4) |
-| --- | --- | --- |
-| vue2 | 3 | 3 |
-| vue3 | 4 | 4 |

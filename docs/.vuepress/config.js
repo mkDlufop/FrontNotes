@@ -24,7 +24,7 @@ module.exports = {
         items: [
           { text: 'Vue 基础', link: '/vue_base/' },
           { text: 'Vuex', link: '/vue_vuex/' },
-          { text: '路由', link: '/vue_router/' },
+          { text: 'Vue Router', link: '/vue_router/' },
           { text: 'Vue CLI', link: '/vue_cli/' },
         ]
       },
@@ -34,7 +34,7 @@ module.exports = {
         text: '最佳实践',
         items: [
           { text: '用户界面优化', link: '/ui_optimize/' },
-          { text: '性能优化', link: 'performance_optimize' },
+          { text: '性能优化', link: '/performance_optimize/' },
         ]
       },
       {

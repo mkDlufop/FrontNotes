@@ -12,13 +12,15 @@ permalink: /vue_base/
 
 1. el 有 2 种写法
 
-   (1) new Vue 时配置 el 属性
-   (2) 先创建 vue 实例，随后再通过`vm.$mount(’#root’)`指定 el 的值。
+   （1）new Vue 时配置 el 属性。
+
+   （2）先创建 vue 实例，随后再通过 `vm.$mount(’#root’)` 指定 el 的值。
 
 2. data 有 2 种写法
 
-   (1)对象式
-   (2)函数式。
+   （1）对象式。
+
+   （2）函数式。
 
    ```js
    data() {
@@ -32,11 +34,11 @@ permalink: /vue_base/
 
 ### MVVM 模型
 
-1.M: 模型（Model）: data 中的数据
+1. M: 模型（Model）: data 中的数据。
 
-2.V: 视图（View）: 模板代码
+2. V: 视图（View）: 模板代码。
 
-3.VM: 视图模型（ViewModel）: Vue 实例
+3. VM: 视图模型（ViewModel）: Vue 实例。
 
 ### Vue 中的数据代理
 
@@ -74,13 +76,13 @@ Object.defineProperty(person, 'age', {
 
 1. Vue 中的数据代理
 
-    >数据代理：通过一个对象代理另一个对象中属性的操作（读/写）
+    >数据代理：通过一个对象代理另一个对象中属性的操作（读/写）。
 
-    通过 vm 对象来代理 data 对象中属性的操作（读/写）
+    通过 vm 对象来代理 data 对象中属性的操作（读/写）。
 
 2. Vue 中数据代理的好处
 
-   更加方便的操作 data 中的数据
+   更加方便的操作 data 中的数据。
 
 3. 基本原理
 
@@ -94,23 +96,25 @@ Object.defineProperty(person, 'age', {
 
 2. 如何监测对象中的数据？
 
-    通过 setter 实现监视，且要在 new Vue 时就传入要监测的数据。
+    通过 setter 实现监视，且要在 new Vue 时就传入要监测的数据：
 
     （1）对象中后追加的属性，Vue 默认不做响应式处理。
-    （2）如需给后添加的属性做响应式，请使用如下 API：
-    ` Vue.set(target, propertyName/index, value) `或
-    `vm.$set(target, propertyName/index, value)`
+
+    （2）如需给后添加的属性做响应式，请使用如下 API：` Vue.set(target, propertyName/index, value) ` 或 `vm.$set(target, propertyName/index, value)`。
 
 3. 如何监测数组中的数据？
 
     通过包裹数组更新元素的方法实现，本质就是做了两件事情：
-    （1）. 调用原生对应的方法对数组进行更新。
-    （2）. 重新解析模板，进而更新页面。
+
+    （1） 调用原生对应的方法对数组进行更新。
+
+    （2） 重新解析模板，进而更新页面。
     数组中的每一项没有单独为其服务的 setter，所以整体修改数组中的每一项 Vue 不会监测，即`arr[0] = …`没有效果。
 
 4. 在 Vue 修改数组中的某个元素一定要用如下方法：
 
     （1）. 使用这些 API：`push()`、`pop()`、`shift()`、`unshift()`、`splice()`、`sort()`、`reverse()`
+
     （2）.`Vue.set()` 或 `vm.$set()`
 
 5. 特别注意 Vue.set() 和 vm.$set() 不能给 vm 或 vm 的根数据对象添加对象，也就是括号内第一个值不能是 vm。
@@ -119,45 +123,56 @@ Object.defineProperty(person, 'age', {
 
 #### 事件的基本使用
 
-1. 使用 v-on:xxx 或@xxx 绑定事件。
+1. 使用 `v-on:xxx` 或 `@xxx` 绑定事件。
 
-2.methods 中配置的函数，都是被 Vue 所管理的函数，this 的指向是 vm 或 组件实例对象。
+2. methods 中配置的函数，都是被 Vue 所管理的函数，this 的指向是 vm 或 组件实例对象。
 
-3.`@click=’demo’`和`@click=’demo($event)’`效果一致，但后者可以传参。
+3. `@click=’demo’`和`@click=’demo($event)’`效果一致，但后者可以传参。
 
 #### 事件修饰符
 
-1.prevent: 阻止默认事件（常用）
+1. prevent: 阻止默认事件（常用）
 
-2.stop: 阻止事件冒泡（常用）
+2. stop: 阻止事件冒泡（常用）
 
-3.once: 事件只触发一次（常用）
+3. once: 事件只触发一次（常用）
 
-4.capture: 使用事件的捕获模式
+4. capture: 使用事件的捕获模式
 
-5.self: 只有 event.target 是当前操作的元素时才触发事件
+5. self: 只有 event.target 是当前操作的元素时才触发事件
 
-6.passive: 事件的默认行为立即执行，无需等待事件回调执行完毕
+6. passive: 事件的默认行为立即执行，无需等待事件回调执行完毕
+
+7. native：把当前元素作为原生标签看待
 
 #### 键盘事件
 
 1. Vue 中常用的按键别名：
 
     回车 =》 enter
+
     删除 =》 delete（捕获“删除”和“退格”键）
+
     退出 =》 esc
+
     空格 =》 space
+
     换行 =》 tab（特殊，必须配合 keydown 去使用）
+
     上 =》 up
+
     下 =》 down
+
     左 =》 left
+
     右 =》 right
 
 2. Vue 未提供别名的按键，可以使用按键原始的 key 值去绑定，但注意要转为 key-case（短横线命名），如`@keyup.caps-lock=”xxx”`。
 
-3. 系统修饰键（用法特殊）：ctrl，alt，shift，meta
+3. 系统修饰键（用法特殊）：ctrl，alt，shift，meta。
 
     （1）配合 keyup 使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。
+
     （2）配合 keydown 使用：正常触发事件。
 
 ### 计算属性与监测属性
@@ -199,6 +214,7 @@ Object.defineProperty(person, 'age', {
 3. get 函数什么时候执行？
 
     （1）初次读取时会执行一次。
+
     （2）当依赖的数据发生改变时被再次调用。
 
 4. 优点：与 methods 实现相比，内部有缓存机制（复用），效率更高，调试方便。
@@ -206,17 +222,18 @@ Object.defineProperty(person, 'age', {
 5. 备注：
 
     （1）计算属性最终会出现在 vm 上，直接读取使用即可。
+
     （2）如果计算属性要被修改，那必须写 set 函数去响应修改，且 set 中要引起**计算时依赖的数据**发生改变。
 
 监视属性 watch：
 
-1. 当被监视的属性变化时，回调函数自动调用，进行相关操作
+1. 当被监视的属性变化时，回调函数自动调用，进行相关操作。
 
-2. 监视的属性必须存在，才能进行监视
+2. 监视的属性必须存在，才能进行监视。
 
 3. 监视的两种方法：
 
-    （1）new Vue 时传入 watch 配置
+    （1）new Vue 时传入 watch 配置：
 
     ```js
     ...
@@ -236,7 +253,7 @@ Object.defineProperty(person, 'age', {
     ...
     ```
 
-    （2）通过 vm.$watch 监视 (vm 是一个 Vue 实例）
+    （2）通过 vm.$watch 监视（vm 是一个 Vue 实例）：
 
     ```js
     vm.$watch('title', {
@@ -280,17 +297,15 @@ computed 和 watch 之间的区别：
 
 若：`<input type=”checkbox” />` ，
 
-（1）. 没有配置 input 的 value 属性，那么收集的就是 checked（勾选 or 未勾选，是布尔值）
+（1）没有配置 input 的 value 属性，那么收集的就是 checked（勾选 or 未勾选，是布尔值），
 
-（2）.v-model 的初始值是数组，那么收集的就是 value 组成的数组
+（2）v-model 的初始值是数组，那么收集的就是 value 组成的数组。
 
-备注：v-model 的一些修饰符：
-
-lazy；失去焦点再收集数据
-
-number；输入字符串转为有效的数字
-
-trim：输入首尾空格过滤
+> v-model 的一些修饰符：
+>
+> - lazy；失去焦点再收集数据。
+> - number；输入字符串转为有效的数字。
+> - trim：输入首尾空格过滤。
 
 ### 生命周期
 
@@ -317,24 +332,34 @@ trim：输入首尾空格过滤
 1. 关于组件名：
 
     一个单词组成：
-    （1）. 首字母小写：school
-    （2）. 首字母大写：School
+
+    （1）首字母小写：school。
+
+    （2）首字母大写：School。
+
     多个单词组成：
-    （1）.kebab-case 命名：my-school
-    （2）.CamelCase 命名：MySchool（需要 Vue 脚手架支持）
+
+    （1）kebab-case 命名：my-school。
+
+    （2）CamelCase 命名：MySchool（需要 Vue 脚手架支持）。
+
     备注：
+
     （1）组件名尽可能回避 HTML 中已有的元素名称，例如：h1、H2 都不行。
+
     （2）可以使用 name 配置项指定组件在开发者工具中呈现的名字。
 
 2. 关于组件标签：
 
-    第一种写法： `<school></school>`
-    第二种写法： `<school />`
+    第一种写法： `<school></school>`。
+
+    第二种写法： `<school />`。
+
     不使用脚手架时，`<school />`会导致后续组件不能渲染。
 
 3. 一个简写方式：
 
-    `const school = Vue.extend(option)` 可简写为：`const school = options // 实际执行时 Vue 还是会在判断后执行 extend 函数`
+    `const school = Vue.extend(option)` 可简写为：`const school = options // 实际执行时 Vue 还是会在判断后执行 extend 函数`。
 
 #### 关于 VueComponent
 
@@ -465,7 +490,7 @@ trim：输入首尾空格过滤
   
   2. 使用事件总线：
   
-      - (1). 接受数据：A 组件想接受数据，则在 A 组件中给 `$bus` 绑定自定义事件，事件的回调留在 A 组件自身。
+      （1）接受数据：A 组件想接受数据，则在 A 组件中给 `$bus` 绑定自定义事件，事件的回调留在 A 组件自身。
 
         ```js
         methods() {
@@ -477,9 +502,9 @@ trim：输入首尾空格过滤
         }
         ```
 
-      - (2). 提供数据：`this.$bus.$emit(’myEvent’, 数据）`
+      （2）提供数据：`this.$bus.$emit(’myEvent’, 数据）`
   
-  3. **最好在 beforeDestroy 钩子中，用 $off 去解绑当前组件所用到的事件。**
+  3. **最好在 beforeDestroy 钩子中，用 $off 去解绑当前组件所用到的事件：**
 
       ```js
       // A 组件中
@@ -489,7 +514,7 @@ trim：输入首尾空格过滤
       }
       ```
 
-- 消息订阅与发布（pubsub）：适用于**任意组件间通信**
+- 消息订阅与发布（pubsub）：适用于**任意组件间通信**。
 
   使用步骤：
   
@@ -497,7 +522,7 @@ trim：输入首尾空格过滤
   
   2. 引入：`import pubsub from ‘pubsub-js’`
   
-  3. 接受数据：A 组件想接受数据，则在 A 组件中订阅消息，订阅的回调留在 A 组件自身。
+  3. 接受数据：A 组件想接受数据，则在 A 组件中订阅消息，订阅的回调留在 A 组件自身：
   
      ```js
      methods() {
@@ -517,7 +542,7 @@ trim：输入首尾空格过滤
 
 ### mixin（混入）
 
-功能：可以把多个组件共用的配置提取成一个混入对象
+功能：可以把多个组件共用的配置提取成一个混入对象。
 
 使用方式：
 
@@ -533,13 +558,13 @@ export const mix = {
 
 第二步使用混入，例如：
 
-（1）. 全局混入 (main.js 中）： Vue.mixin(xxx)
+（1）全局混入（main.js 中）： `Vue.mixin(xxx)`
 
-（2）. 局部混入（组件中）：mixins: [’xxx’]
+（2）局部混入（组件中）：`mixins: [’xxx’]`
 
 ### 插件
 
-功能：用于增强 Vue
+功能：用于增强 Vue。
 
 本质：包含 install 方法的一个对象，install 的第一个参数是 Vue，第二个以后的参数是插件使用者传递的数据。
 

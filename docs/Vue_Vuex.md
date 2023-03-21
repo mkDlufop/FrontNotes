@@ -44,7 +44,7 @@ permalink: /vue_vuex/
   
     ```
 
-2. 在 main.js 中创建 vm 时传入 store 配置项（ Vue 的实例对象被简称为 vm ）
+2. 在 main.js 中创建 vm 时传入 store 配置项（ Vue 的实例对象被简称为 vm ）。
 
     ```js
     ......
@@ -109,7 +109,7 @@ permalink: /vue_vuex/
 
 1. 概念：当 state 中的数据需要经过加工后再使用时，可以使用 `getters` 加工。
 
-2. 在 `store.js` 中追加 `getters` 配置
+2. 在 `store.js` 中追加 `getters` 配置。
 
     ```js
     ......
@@ -127,11 +127,11 @@ permalink: /vue_vuex/
     })
     ```
 
-3. 组件中读取数据：`$store.getters.bigSum`
+3. 组件中读取数据：`$store.getters.bigSum`。
 
 ### 四个 map 方法的使用
 
-1. `mapState` 方法：用于帮助我们映射 `state` 中的数据为计算属性
+1. `mapState` 方法：用于帮助我们映射 `state` 中的数据为计算属性。
 
     ```js
     computed: {
@@ -155,7 +155,7 @@ permalink: /vue_vuex/
     },
     ```
 
-2. `mapGetters` 方法：用于帮助我们映射 `getters` 中的数据为计算属性
+2. `mapGetters` 方法：用于帮助我们映射 `getters` 中的数据为计算属性。
 
     ```js
     computed: {
@@ -168,7 +168,7 @@ permalink: /vue_vuex/
     }
     ```
 
-3. `mapActions` 方法：用于帮助我们生成与 `actions` 对话的方法，即：包含 `$store.dispatch(xxx)` 的函数
+3. `mapActions` 方法：用于帮助我们生成与 `actions` 对话的方法，即：包含 `$store.dispatch(xxx)` 的函数。
 
     ```js
     methods: {
@@ -180,7 +180,7 @@ permalink: /vue_vuex/
     }
     ```
 
-4. `mapMutations` 方法：用于帮助我们生成与 `mutations` 对话的方法，即：包含 `$store.commit(xxx)` 的函数
+4. `mapMutations` 方法：用于帮助我们生成与 `mutations` 对话的方法，即：包含 `$store.commit(xxx)` 的函数。
 
     ```js
     methods: {
@@ -198,7 +198,7 @@ permalink: /vue_vuex/
 
 1. 目的：让代码更好维护，让多种数据分类更加明确。
 
-2. 修改 `store.js`
+2. 修改 `store.js`。
 
     ```js
     const countAbout = {
