@@ -568,10 +568,9 @@ color: #123456;         // #红色绿色蓝色
 
 两种盒模型：
 
-- `box-sizing：content-box;` 盒子大小为 width+padding+border（以前默认的，会撑大盒子）
+- `box-sizing：content-box;` 即为标准盒子模型。width=content。
 
-- `box-sizing：border-box;` 盒子大小为 width
-，padding 和 border 不会撑大盒子了（前提 padding 和 border 不会超过 width 宽度）
+- `box-sizing：border-box;` 即为 IE 盒子模型。width=content+padding+border。
 
 #### 块内元素的盒模型
 
