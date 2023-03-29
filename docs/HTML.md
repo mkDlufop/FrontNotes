@@ -42,11 +42,17 @@ p、br、hr
 
 ### 图像标签（单标签）
 
-img 常用的一些属性。
+img 常用的一些属性：
 
-- `src=“绝对路径 url/相对路径 url”`
+- `src=“绝对路径/相对路径”`
 - `alt=“图片显示不出来的时候显示的文字”`
 - `title=“鼠标移动到图片上显示的文字”`
+- `srcset="xxx.png 2x"` 或 `srcset="xxx.png 128w"`：
+
+   响应式页面中经常用到根据屏幕密度设置不同的图片。srcset 属性用于设置不同屏幕密度下，img 会自动加载不同的图片。`<img src="image-128.png" srcset="image-256.png 2x" />`：在屏幕密度为 1x 的情况下加载 image-128.png, 屏幕密度为 2x 时加载 image-256.png。
+- `sizes="[media query] [length], [media query] [length] ... "`：
+
+    `<img src="image-128.png" srcset="image-128.png 128w, image-256.png 256w, image-512.png 512w" sizes="(max-width: 360px) 340px, 128px" />`，其中 srcset 指定图片的地址和对应的图片质量。sizes 用来设置图片的尺寸零界点。对于 srcset 中的 w 单位，可以理解成图片质量。如果可视区域小于这个质量的值，就可以使用。浏览器会自动选择一个最小的可用图片。sizes 就是指默认显示 128px, 如果视区宽度大于 360px, 则显示 340px。
 
 ### 超链接标签
 
@@ -342,11 +348,34 @@ sub 标签：用于定义下标。示例如右：H<sub>2</sub>O
 ### meta 标签
 
 ```html
+<!--用来描述 HTML 文档的编码类型-->
 <meta charset="UTF-8" >
+<!--页面关键词-->
 <meta name="keywords" content="HTML5,CSS"/>
+<!--页面描述-->
 <meta name="description" content="页面描述内容" />
+<!--页面重定向和刷新-->
 <meta http-equiv="refresh" content="秒数；url=目标路径"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /><!-- 适配移动端，可以控制视口的大小和比例 -->
+<!-- 
+    适配移动端，可以控制视口的大小和比例。content 参数有以下几种：
+        width：宽度(数值/device-width)
+        height：高度(数值/device-height)
+        initial-scale ：初始缩放比例
+        maximum-scale ：最大缩放比例
+        minimum-scale ：最小缩放比例
+        user-scalable ：是否允许用户缩放(yes/no）
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!--
+    搜索引擎索引方式。content 参数有以下几种：
+        index：允许机器人索引此页面（默认）。
+        noindex：要求机器人不索引此页面。
+        follow：允许机器人跟随此页面上的链接（默认）。
+        nofollow：要求机器人不跟随此页面上的链接。
+        all：与 index, follow 等价。
+        none：与 noindex, nofollow 等价。
+-->
+<meta name="robots" content="index,follow" />
 ```
 
 Reference:
