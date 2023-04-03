@@ -246,16 +246,38 @@ permalink: /interview_questions_CSS/
 
 ### 9. 常见的图片格式及使用场景
 
-1. BMP，是无损的、既支持索引色也支持直接色的点阵图。这种图片格式几乎没有对数据进行压缩，所以 BMP 格式的图片通常是较大的文件。
-2. GIF，是无损的、采用索引色的点阵图。采用 LZW 压缩算法进行编码。文件小，是 GIF 格式的优点，同时，GIF 格式还具有支持动画以及透明的优点。但是 GIF 格式仅支持 8bit 的索引色，所以 GIF 格式适用于对色彩要求不高同时需要文件体积较小的场景。
-3. JPG（JPEG） ，是有损的、采用直接色的点阵图。JPEG 的图片的优点是采用了直接色，得益于更丰富的色彩，JPEG 非常适合用来存储照片，与 GIF 相比，JPEG 不适合用来存储企业 Logo、线框类的图。因为有损压缩会导致图片模糊，而直接色的选用，又会导致图片文件较 GIF 更大。
-4. PNG-8，是无损的、使用索引色的点阵图。PNG 是一种比较新的图片格式，PNG-8 是非常好的 GIF 格式替代者，在可能的情况下，应该尽可能的使用 PNG-8 而不是 GIF，因为在相同的图片效果下，PNG-8 具有更小的文件体积。除此之外，PNG-8 还支持透明度的调节，而 GIF 并不支持。除非需要动画的支持，否则没有理由使用 GIF 而不是 PNG-8。
-5. PNG-24，是无损的、使用直接色的点阵图。PNG-24 的优点在于它压缩了图片的数据，使得同样效果的图片，PNG-24 格式的文件大小要比 BMP 小得多。当然，PNG24 的图片还是要比 JPEG、GIF、PNG-8 大得多。
-6. SVG，是无损的矢量图。SVG 是矢量图意味着 SVG 图片由直线和曲线以及绘制它们的方法组成。当放大 SVG 图片时，看到的还是线和曲线，而不会出现像素点。SVG 图片在放大时，不会失真，所以它适合用来绘制 Logo、Icon 等。
-7. WebP，是谷歌开发的一种新图片格式，WebP 是同时支持有损和无损压缩的、使用直接色的点阵图。从名字就可以看出来它是为 Web 而生的，什么叫为 Web 而生呢？就是说相同质量的图片，WebP 具有更小的文件体积。现在网站上充满了大量的图片，如果能够降低每一个图片的文件大小，那么将大大减少浏览器和服务器之间的数据传输量，进而降低访问延迟，提升访问体验。目前只有 Chrome 浏览器和 Opera 浏览器支持 WebP 格式，兼容性不太好。
-    - 在无损压缩的情况下，相同质量的 WebP 图片，文件大小要比 PNG 小 26%；
-    - 在有损压缩的情况下，具有相同图片精度的 WebP 图片，文件大小要比 JPEG 小 25%~34%；
-    - WebP 图片格式支持图片透明度，一个无损压缩的 WebP 图片，如果要支持透明度只需要 22%的格外文件大小。
+1. JPG：
+   - 概述：扩展名为 .jpg 或 .jpeg ，是一种**有损**的压缩格式（把肉眼不容易观察出来的细节丢弃了）。
+   - 主要特点：**支持的颜色丰富**、**占用空间较小**、不支持透明背景、不支持动态图。
+   - 使用场景：**对图片细节没有极高要求**的场景，例如：网站的产品宣传图等 。
+2. PNG：
+   - 概述：扩展名为 .png ，是一种**无损**的压缩格式，能够更高质量的保存图片。
+   - 主要特点：**支持的颜色丰富**、占用空间略大、**支持透明背景**、不支持动态图。
+   - 使用场景：1，**想让图片有透明背景**；2，**想更高质量的呈现图片**；例如 ：公司 logo 图、重要配图等。
+3. BMP：
+   - 概述：扩展名为 .bmp ，**不进行压缩**的一种格式，在最大程度上保留图片更多的细节。
+   - 主要特点：**支持的颜色丰富**、**保留的细节更多**、占用空间极大、不支持透明背景、不支持动
+   - 态图。
+   - 使用场景：**对图片细节要求极高**的场景，例如：一些大型游戏中的图片 。（网页中很少使
+用）
+4. GIF：
+   - 概述：扩展名为 .gif ，仅支持256种颜色，色彩呈现不是很完整。
+   - 主要特点：支持的颜色较少、**占用空间小**、**支持简单透明背景**、**支持动态图**。
+   - 使用场景：网页中的动态图片。
+5. WebP：
+   - 概述：扩展名为 .webp ，谷歌推出的一种格式，专门用来在网页中呈现图片。
+   - 主要特点：具备上述几种格式的优点，但兼容性不太好，一旦使用务必要解决兼容性问题。
+      - 在无损压缩的情况下，相同质量的 WebP 图片，文件大小要比 PNG 小 26%；
+      - 在有损压缩的情况下，具有相同图片精度的 WebP 图片，文件大小要比 JPEG 小 25%~34%；
+      - WebP 图片格式支持图片透明度，一个无损压缩的 WebP 图片，如果要支持透明度只需要 22%的格外文件大小。
+   - 使用场景：网页中的各种图片。
+6. base64 格式：
+   - 本质：一串特殊的文本，要通过浏览器打开，传统看图应用通常无法打开。
+   - 原理：把图片进行 base64 编码，形成一串文本。
+   - 如何生成：靠一些工具或网站。
+   - 如何使用：直接作为 img 标签的 src 属性的值即可，并且不受文件位置的影响。
+   - 使用场景：一些较小的图片，或者需要和网页一起加载的图片。
+7. SVG，是无损的矢量图。SVG 是矢量图意味着 SVG 图片由直线和曲线以及绘制它们的方法组成。当放大 SVG 图片时，看到的还是线和曲线，而不会出现像素点。SVG 图片在放大时，不会失真，所以它适合用来绘制 logo、icon 等。
 
 ### 10. 为什么有时候⽤ translate 来改变位置⽽不是定位？
 
@@ -263,60 +285,81 @@ translate 是 transform 属性的⼀个值。改变 transform 或 opacity 不会
 
 transform 使浏览器为元素创建⼀个 GPU 图层，但改变绝对定位会使⽤到 CPU。 因此 translate() 更⾼效，可以缩短平滑动画的绘制时间。 ⽽ translate 改变位置时，元素依然会占据其原始空间，绝对定位就不会发⽣这种情况。translate 不会影响其他元素的位置，而绝对定位会脱标，从而影响其他元素的位置。
 
+### 11. 行内块的幽灵空白问题
+
+产生原因：行内块元素与文本的基线对齐，而文本的基线与文本最底端之间是有一定距离的。例如，一个 div 中放一个 img 和一段文字，显示的页面中图片底部会有一小部分空白的地方。
+
+解决方案：
+
+- 给行行内块设置 vertical ，值不为 baseline 即可，设置为 middel 、 bottom 、top 均可。
+- 若父元素中只有一张图片，设置图片为`display: block`。
+- 给父元素设置`font-size: 0`。如果该行内块内部还有文本，则需单独设置 fontsize 。
+
 ## 页面布局
 
 ### 1. 水平垂直居中的实现
 
 - 绝对定位 + transform（可以不知道子盒子宽度和高度）
 
-       父亲给一个高度，`position: relative;`
+   父亲给一个高度，`position: relative;`
 
-       子盒子`position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);`
+   子盒子`position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);`
 
 - 绝对定位 + margin:auto（适用于子盒子有宽度和高度）
 
-       父容器给一个高度，`position: relative;`
+   父容器给一个高度，`position: relative;`
 
-       子容器有宽度和高度，`position：absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto;`
+   子容器有宽度和高度，`position：absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto;`
 
 - 绝对定位 + margin 负值（适用于已知子盒子宽度和高度）
 
-       父容器给一个高度，`position: relative;`
+   父容器给一个高度，`position: relative;`
 
-       子盒子绝对定位，`top: 50%; left: 50%; margin-top: - 高度/2 px; margin-left: - 宽度/2 px`
+   子盒子绝对定位，`top: 50%; left: 50%; margin-top: - 高度/2 px; margin-left: - 宽度/2 px`
 
 - flex 布局
 
-       父容器给一个高度，`display: flex; justify-content: center; align-items: center;`
+   父容器给一个高度，`display: flex; justify-content: center; align-items: center;`
+
+- flex + margin
+
+   父容器开启 flex 布局，随后子元素设置为：`margin: auto`
 
 - grid 布局
 
-       父容器设置为`display: grid; place-items: center;`
+   父容器设置为`display: grid; place-items: center;`
 
 ### 2. 水平居中的实现
 
-- 对于**行内元素**：`text-align: center;`
+即让子元素，在父亲中水平居中。
 
-- 对于确定宽度的**块级元素**：
+- 若子元素为**行内元素、行内块元素**，给父元素加上：`text-align: center`。
 
-  - `margin: 0 auto;`
+- 若子元素为确定宽度的**块级元素**：
 
-  - 父元素需开启相对定位，`position: absolute; left: 50%; margin-left: - 宽度/2 px`
+  - 给子元素加上：`margin: 0 auto;`
+
+  - 父元素开启相对定位，子元素设置为：`position: absolute; left: 50%; margin-left: - 宽度/2 px`
 
 - 对于宽度未知的**块级元素**：
 
-  - 使用 table 标签（或者将块级元素设置为`display: table`)，再给该标签设置`margin-left: auto; margin-right: auto;`
+  - 使用 table 标签（或者将块级元素设置为`display: table`），再给该标签设置`margin-left: auto; margin-right: auto;`
 
   - `display: inline-block; text-align: center;`
 
-  - 父元素需开启相对定位，`position: absolute; left: 50%; transform: translateX(-50%);`
-  - flex 布局使用`justify-content: center;`
+  - 父元素开启相对定位，子元素设置为：`position: absolute; left: 50%; transform: translateX(-50%);`
 
 ### 3. 垂直居中的实现
 
-- 父盒子设置相对定位，子盒子`position: absolute; top: 0; bottom: 0; margin: auto 0;`（适用于子盒子有高度）
+即让子元素，在父亲中 垂直居中。
 
-- 父盒子设置相对定位，子盒子`position: absolute; top: 50%; transform: translateY(-50%);`（可以不知道子盒子的高度）
+- 父盒子设置相对定位，子盒子`position: absolute; top: 0; bottom: 0; margin: auto 0;`
+
+- 父盒子设置相对定位，子盒子`position: absolute; top: 50%; transform: translateY(-50%);`
+
+- 若子元素为块元素，给子元素加上：margin-top，值为：(父元素 content －子元素盒子总高) / 2。
+
+- 若子元素为行内元素、行内块元素，让父元素的 height = line-height ，每个子元素都加上： `vertical-align: middle;`。（若想绝对垂直居中，父元素 font-size 设置为 0 。）
 
 ### 4. 两栏布局的实现
 
@@ -428,12 +471,17 @@ div {
 }
 ```
 
+<div style="width: 0;
+  height: 0;
+  border: 100px solid transparent;
+  border-top-color: red;"></div>
+
 ### 2. 实现一个扇形
 
 用 CSS 实现扇形的思路和三角形基本一致。
 
 ```css
-// 扇形
+/* 扇形 */
 div {
   width: 0;
   height: 0;
@@ -443,20 +491,31 @@ div {
 }
 ```
 
+  <div style="width: 0;
+  height: 0;
+  border: 100px solid transparent;
+  border-radius: 100px;
+  border-top-color: red;"></div>
+
 ```css
-// 圆
+/* 圆 */
 div {
-  width: 100;
-  height: 100;
+  width: 100px;
+  height: 100px;
   background-color: red;
   border-radius: 50%;
 }
 ```
 
+<div style="width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 50%;"></div>
+
 ### 3. 实现一个宽高自适应的正方形
 
 ```css
-// vw 方式
+/* vw 方式 */
 .square {
   width: 10%;
   height: 10vw;
@@ -465,7 +524,7 @@ div {
 ```
 
 ```css
-// 利用元素的 margin/padding 百分比是相对父元素 width 的性质来实现
+/* 利用元素的 margin/padding 百分比是相对父元素 width 的性质来实现 */
 .square {
   width: 20%;
   height: 0;
@@ -476,7 +535,7 @@ div {
 ```
 
 ```css
-// 利用子元素的 margin-top 的值来实现 
+/* 利用子元素的 margin-top 的值来实现 */
 .square {
   width: 30%;
   overflow: hidden;
