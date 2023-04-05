@@ -51,7 +51,7 @@ let 和 const 的行为基本相同，唯一一个重要的区别在于 const �
 
 #### 基本数据类型
 
-**Null**
+##### Null
 
 null 表示“没有对象”，即该处不应该有值。
 
@@ -61,7 +61,7 @@ console.log(Number(null)); // => 0
 console.log(typeof null); // => object
 ```
 
-**Undefined**
+##### Undefined
 
 undefined 表示“缺值”，就是此处应该有一个值，但是还没有定义。
 
@@ -69,7 +69,7 @@ undefined 表示“缺值”，就是此处应该有一个值，但是还没有�
 console.log(Number(undefined)); // => NaN
 ```
 
-**Boolean 类型**
+##### Boolean 类型
 
 - `Boolean()` 函数可以在任意类型的数据上调用，而且始终返回一个布尔值。不同类型与布尔值之间的转换规则：
   
@@ -83,7 +83,7 @@ console.log(Number(undefined)); // => NaN
     | Null | N/A（不存在） | null |
     | Symbol | 任意 Symbol 值 | N/A（不存在）|
 
-**Number 类型**
+##### Number 类型
 
 - 使用字面量（literal）直接表示一个数值时，JavaScript 对整数提供四种进制的表示方法：十进制、十六进制、八进制、二进制。
   - 十进制：没有前导 0 的数值。
@@ -151,7 +151,7 @@ console.log(Number(undefined)); // => NaN
     `parseFloat()`函数的另一个不同之处在于，它始终忽略字符串开头的零。如：`parseFloat(”0xA”);  //  0`。
   - 隐式转换：利用 - 、\*、/【变量 - 0、变量 * 1 、变量 / 1】。
 
-**String 类型**
+##### String 类型
 
 - 特殊字符：
   
@@ -219,7 +219,7 @@ JavaScript 对 UTF-16 的支持是不完整的，由于历史原因，只支持�
       console.log(undefined + '');   // 'undefined'
       ```
 
-**Symbol 类型**
+##### Symbol 类型
 
 `Symbol`表示独一无二的值。
 
@@ -248,525 +248,494 @@ JavaScript 对 UTF-16 的支持是不完整的，由于历史原因，只支持�
 
 #### 引用数据类型
 
-- Object（对象）
+##### Object（对象）
 
-  - 创建对象的方法
+- 创建对象的方法
+  - `new Object([value])`
 
-    - `new Object([value])`
+    Object 构造函数为给定的参数创建一个包装类对象（object wrapper），具体有以下情况：
+    - 如果给定值是 null 或 undefined，将会创建并返回一个空对象
 
-      Object 构造函数为给定的参数创建一个包装类对象（object wrapper），具体有以下情况：
+    - 如果传进去的是一个基本类型的值，则会构造其包装类型的对象
 
-      - 如果给定值是 null 或 undefined，将会创建并返回一个空对象
+    - 如果传进去的是引用类型的值，仍然会返回这个值，经他们复制的变量保有和源对象相同的引用地址
 
-      - 如果传进去的是一个基本类型的值，则会构造其包装类型的对象
+  - `Object([value])`，其行为等同于`new Object(value)`
+  - `Object.create(proto)`，创建一个新对象，使用 `proto` 对象来作为新创建对象的原型。
 
-      - 如果传进去的是引用类型的值，仍然会返回这个值，经他们复制的变量保有和源对象相同的引用地址
+    `proto` 需为 null 或除基本类型包装对象以外的对象，否则会抛出一个 TypeError 异常。
 
-    - `Object([value])`，其行为等同于`new Object(value)`
+  - 利用字面量创建
+- Object 常用方法
+  - `Object.assign(target, ...sources)`：Object.assign() 方法将所有可枚举（`Object.propertyIsEnumerable()` 返回 true）的自有（`Object.hasOwnProperty()` 返回 true）属性从一个或多个源对象复制到目标对象，返回修改后的对象。
+     （第一层为深拷贝，第二层为浅拷贝。）
 
-    - `Object.create(proto)`，创建一个新对象，使用 `proto` 对象来作为新创建对象的原型。
+     ```js
+     const target = { a: 1, b: 2 };
+     const source = { b: 4, c: 5 };
+     
+     const returnedTarget = Object.assign(target, source);
+     
+     console.log(target);
+     // Expected output: Object { a: 1, b: 4, c: 5 }
+     
+     console.log(returnedTarget === target);
+     // Expected output: true
+     ```
 
-      `proto` 需为 null 或除基本类型包装对象以外的对象，否则会抛出一个 TypeError 异常。
+##### Array（数组）
 
-    - 利用字面量创建
+- 创建数组的方法
+  - `new Array([number])`
 
-  - Object 常用方法
-
-    - `Object.assign(target, ...sources)`：Object.assign() 方法将所有可枚举（`Object.propertyIsEnumerable()` 返回 true）的自有（`Object.hasOwnProperty()` 返回 true）属性从一个或多个源对象复制到目标对象，返回修改后的对象。
-       （第一层为深拷贝，第二层为浅拷贝。）
-
-       ```js
-       const target = { a: 1, b: 2 };
-       const source = { b: 4, c: 5 };
-       
-       const returnedTarget = Object.assign(target, source);
-       
-       console.log(target);
-       // Expected output: Object { a: 1, b: 4, c: 5 }
-       
-       console.log(returnedTarget === target);
-       // Expected output: true
-       ```
-
-- Array（数组）
-
-  - 创建数组的方法
-
-    - `new Array([number])`
-
-      ```js
-      let arr1 = new Array();
-      let arr2 = new Array(2);
-      let arr3 = new Array(1,2);
-      console.log(arr1); // []
-      console.log(arr2); // [ <2 empty items> ]
-      console.log(arr3); // [ 1, 2 ]
-      ```
-
-    - 利用字面量创建
-
-  - 检测数组的方法
-
-    - Object.prototype.toString.call（数组名）
-  
-    - 通过 ES6 的 Array.isArray（数组名）
-  
-    - 通过 数组名 instanceof Array
-
-    - 通过原型链
-
-    - Array.prototype.isPrototypeOf（数组名）
-  
-    ```javascript
-    const arr1 = new Array(1,2,3);
-    console.log(Object.prototype.toString.call(arr1)); // [object Array]
-    console.log(Array.isArray(arr1)); // true
-    console.log(arr1 instanceof Array); // true
-    console.log(arr1.__proto__ === Array.prototype); // true
-    console.log(Array.prototype.isPrototypeOf(arr1)); // true
+    ```js
+    let arr1 = new Array();
+    let arr2 = new Array(2);
+    let arr3 = new Array(1,2);
+    console.log(arr1); // []
+    console.log(arr2); // [ <2 empty items> ]
+    console.log(arr3); // [ 1, 2 ]
     ```
 
-  - 数组元素的增删改查、排序
-    - 增
+  - 利用字面量创建
 
-      - 数组末尾添加：`arr.push(value)` ， **改变原数组并返回新的长度。**
-
-        ```js
-        const arr = new Array(0,1);
-        console.log(arr.push(2)); // 3
-        console.log(arr); // [ 0, 1, 2]               
-        console.log(arr.push([3])); // 4
-        console.log(arr); // [ 0, 1, 2, 3]               
-        ```
-
-      - 数组开头添加：`arr.unshift(value)` ，**改变原数组并返回新的长度。**
-
-        ```js
-        const arr = new Array(0,1);
-        console.log(arr.unshift(2)); // 3
-        console.log(arr); // [ 2, 0, 1]
-        console.log(arr.unshift([3])); // 4
-        console.log(arr); // [ 0, 1, 2, 3]               
-        ```
-
-    - 删
-
-      - 删除最后一个元素：`arr.pop()` ，**改变原数组并返回删除的值。**
-
-        ```js
-        const arr = new Array(1,2);
-        console.log(arr.pop()); // 2
-        console.log(arr); // [ 1 ]
-        ```
-
-      - 删除第一个元素：`arr.shift()` ，**改变原数组并返回删除的值。**
-
-        ```js
-        const arr = new Array(1,2);
-        console.log(arr.shift()); // 1
-        console.log(arr); // [ 2 ]
-        ```
-
-    - 改
-
-      - 添加或删除数组中指定位置的元素：`arr.splice(index,howmany,item1,.....,itemX)` ，**会改变原数组的值。**
-
-        ```js
-        const arr = new Array('A','B','C','D');
-        console.log(arr.splice(2,1)); // [ 'C' ]
-        console.log(arr); // [ 'A', 'B', 'D' ]
-        console.log(arr.splice(2,1,2,'E')); // [ 'D' ] // 删除数组的第三个元素，并在数组的第三个位置添加新元素
-        console.log(arr); // [ 'A', 'B', 2, 'E' ]
-        ```
-
-    - 查
-
-      - `arr.indexOf(searchElement，[fromIndex])` ，从前往后找的第一个。若找不到返回-1，找到了返回索引值。
-
-        **fromIndex** 为开始查找的位置。如果该索引值大于或等于数组长度，意味着不会在数组里查找，返回 -1。如果参数中提供的索引值是一个负值，则将其作为数组末尾的一个抵消，即 -1 表示从最后一个元素开始查找，-2 表示从倒数第二个元素开始查找，以此类推。注意：如果参数中提供的索引值是一个负值，并不改变其查找顺序，查找顺序仍然是从前向后查询数组。如果抵消后的索引值仍小于 0，则整个数组都将会被查询。其默认值为 0。
-
-        > `indexOf` 使用全等运算（即 ===）判断 searchElement 与数组中包含的元素之间的关系。
-
-        ```js
-        const arr = new Array(1,6,3,4);
-        console.log(arr.indexOf(1, 0)); // 0
-        console.log(arr.indexOf(4, -2)); // 3
-        console.log(arr); // [ 1, 6, 3, 4 ]
-        ```
-
-      - `arr.lastIndexOf（元素）` ， 从后往前找的第一个。若找不到返回-1，找到了返回索引值
-
-        ```js
-        const arr = new Array(1,6,3,4);
-        console.log(arr.lastIndexOf(1)); // 0
-        console.log(arr); // [ 1, 6, 3, 4 ]
-        ```
-
-    - 排序
-
-      - 颠倒源数组：`arr.reverse()` ， **无参数，改变原数组并返回新数组**
-
-        ```js
-        const arr = new Array(1,6,3,4);
-        console.log(arr.reverse()); // [ 4, 3, 6, 1 ]
-        console.log(arr); // [ 4, 3, 6, 1 ]
-        ```
-
-      - `arr.sort([callback])` 默认排序顺序为按字母升序。
-        - 升序排序：`arr.sort((a,b)=>(a-b))` **改变原数组并返回新数组**。
-          其中回调函数的返回值>0 则 b 会被排列到 a 之前，返回值=0 则 a 与 b 的相对位置不变，返回值<0，则 a 会排列到 b 之前。
-
-          ```js
-          const arr = new Array(1,6,3,4);
-          console.log(arr.sort(function(a,b){return (a-b);})); // [ 1, 2, 4, 6 ]
-          console.log(arr); // [ 1, 2, 4, 6 ]
-          ```
-
-        - 降序排序：`arr.sort((a,b)=>(b-a))` ， **改变原数组并返回新数组**
-          其中回调函数的返回值>0 则 b 会被排列到 a 之前，返回值=0 则 a 与 b 的相对位置不变，返回值<0，则 a 会排列到 b 之前。
-
-          ```js
-          const arr = new Array(1,6,3,4);
-          console.log(arr.sort(function(a,b){return (b-a);})); // [ 6, 4, 3, 1 ]
-          console.log(arr); // [ 6, 4, 3, 1 ]
-          ```
-
-  - 数组的片段浅拷贝、转换成字符串、拼接（不改变原数组）
-    - 数组元素片段浅拷贝
-
-      `arr.slice([begin[, end]])`
-      slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（**包括 begin，不包括 end**）。**原始数组不会被改变。**
+- 检测数组的方法
+  - Object.prototype.toString.call（数组名）
+  - 通过 ES6 的 Array.isArray（数组名）
+  - 通过 数组名 instanceof Array
+  - 通过原型链
+  - Array.prototype.isPrototypeOf（数组名）
   
-      ```js
-      let arr = new Array(1,2);
-      console.log(arr.slice(0,1)); // [ 1 ]
-      ```
-
-    - 转换成字符串
-
-      - `arr.toString()`
-
-        ```js
-        let arr = new Array(1,2);
-        console.log(arr.toString()); // 1,2
-        ```
-
-      - `arr.join(`分隔符`)`
-
-        ```js
-        let arr = new Array(1,2);
-        console.log(arr.join('-')); // 1-2
-        ```
-  
-    - 拼接
-
-      - `arr.concat(arr1, arr2, ...)`
-
-        ```js
-        let arr = new Array(1,2);
-        let arr1 = [ 3 ];
-        let arr2 = [ 4 ];
-        console.log(arr.concat(arr1,arr2)); // [ 1, 2, 3, 4 ]
-        console.log(arr); // [ 1, 2 ]
-        ```
-
-      - es6 新增：`[...arr1, arr2]`
-
-        ```js
-        let arr = new Array(1,2);
-        let arr1 = [ 3 ];
-        console.log([...arr,arr1]); // [ 1, 2, [ 3 ] ]
-        console.log(arr); // [ 1, 2 ]
-        ```
-
-  - 数组的其他方法
-
-    - `forEach()` ，对数组的每个元素执行一次给定的函数。
-
-      `arr.forEach(function(currentValue [, index [, array]])[, thisArg])`
-
-      currentValue：当前元素
-
-      index：当前元素的索引值
-
-      array：forEach() 方法正在操作的数组。
-
-      thisArg：当执行回调函数时，用作 this 的值
-
-      ```js
-      let arr = new Array(1,2);
-      arr.forEach(function(value, index, array) {
-        console.log(value + ' ' + index + ' ' + array);
-        // 1 0 1,2
-        // 2 1 1,2
-      });
-      ```
-
-    - `filter()` ， 方法创建一个新数组，其包含通过所提供函数实现的测试的所有元素。
-
-      `let newArray = arr.filter(function(element[, index[, array]])[, thisArg])`
-
-      element：数组中当前正在处理的元素。
-
-      index：正在处理的元素在数组中的索引。
-
-      array：调用了 filter 的数组本身。
-
-      thisArg：执行回调函数时，用于 this 的值。
-
-      filter() 为数组中的每个元素调用一次 callback 函数，并**利用**所有使得 callback 返回 true 或等价于 true 的值的**元素创建一个新数组**。callback 只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用。那些没有通过 callback 测试的元素会被跳过，不会被包含在新数组中。
-
-      **filter 不会改变原数组，它返回过滤后的新数组。**
-
-      ```js
-      let arr = new Array(1,2,3);
-      let arr1 = arr.filter(function(e) {
-        return e > 1;
-      });
-      console.log(arr1); // [ 2, 3 ]
-      ```
-
-    - `reduce()` 方法对数组中的每个元素按序执行回调函数，每一次运行回调函数会将先前元素的计算结果作为参数传入，最后将其结果汇总为单个返回值。
-
-      第一次执行回调函数时，不存在“上一次的计算结果”。如果需要回调函数从数组索引为 0 的元素开始执行，则需要传递初始值。否则，数组索引为 0 的元素将被作为初始值 initialValue，迭代器将从第二个元素开始执行（索引为 1 而不是 0）。
-
-      `arr.reduce(function(total, currentValue[, currentIndex[, array]])[, initialValue)]`
-
-      total：初始值，或者计算结束后的返回值。
-
-      currentValue：当前元素。
-
-      currentIndex：当前元素的索引。
-
-      array：当前元素所属的数组对象。
-
-      initialValue：传递给函数的初始值。
-
-      ```js
-      let arr = new Array(1,2,5);
-      let getSum = function(total,num) {
-       console.log(total + ' ' + num);
-       return total + Math.round(num); 
-      };
-      console.log(arr.reduce(getSum));
-      // 1 2
-      // 3 5
-      // 8 
-      // 未给定初始值，回调的迭代从第二个元素开始执行
-      console.log(arr.reduce(getSum,0));
-      // 0 1
-      // 1 2
-      // 3 5
-      // 8
-      // 回调函数从第一个元素开始执行
-      console.log(arr.reduce(getSum,5)); // 12
-      console.log(arr); // [ 1, 2, 5 ]
-      ```
-
-    - `map()` 方法创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成。
-
-      `var new_array = arr.map(function     (currentValue[, index[, array]]) {
-        // Return element for new_array
-      }[, thisArg])`
-
-      currentValue：当前元素
-
-      index：当前元素的索引值
-
-      array：map 方法调用的数组。
-
-      thisArg：当执行回调函数时，用作 this 的值
-
-      ```js
-      let arr = new Array(1,2);
-      let arr1 = arr.map(function(val, index, array){
-        console.log(val + ' ' + index + ' ' + array);
-        // 1 0 1,2
-        // 2 1 1,2
-        return val+1;
-      });
-      console.log(arr1); // [ 2, 3 ]
-      ```
-
-    - `every()` 方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值。
-
-      如果回调函数的每一次返回都为 truthy 值，返回 true，否则返回 false。
-
-      `arr.every(function(element[, index[, array]])[, thisArg])`
-
-      element：当前元素
-
-      index：当前元素的索引值
-
-      array：当前元素所属的数组对象
-
-      thisArg：当执行回调函数时，用作 this 的值
-
-      ```js
-      console.log([].every(e => e > 0)); // true
-      console.log([1,-1,2].every(e => e > 0)); // false
-      console.log([1,1,2].every(e => e > 0)); // true
-      ```
-
-    - `some()` 方法测试数组中是不是至少有 1 个元素通过了被提供的函数测试。它返回的是一个 Boolean 类型的值。
-
-      数组中有至少一个元素通过回调函数的测试就会返回 true；所有元素都没有通过回调函数的测试返回值才会为 false。
-
-      `arr.some(function(element[, index[, array]])[, thisArg])`
-
-      element：当前元素
-
-      index：当前元素的索引值
-
-      array：当前元素所属的数组对象
-
-      thisArg：当执行回调函数时，用作 this 的值
-
-      ```js
-      console.log([].some(e => e > 0)); // false
-      console.log([1,-1,2].some(e => e > 0)); // true
-      console.log([1,1,2].some(e => e > 0)); // true
-      ```
-
-- Function（函数）
-
-- String（字符串对象）
-
-  ```js
-  // 拼接字符串：字符串名称。concat（字符串名称，...）
-  // concat() 方法用于连接两个或多个字符串，拼接字符串，等效于+，+更常用
-  console.log('000'.concat('123','456')); // 000123456 // 截取字符串：字符串名称。substr（start,length）
-  // 从 start 位置开始（索引号），length 取的个数
-  console.log('123'.substr(0,2)); // 12
-  
-  // 替换字符串：字符串名称。replace（‘被替换的字符’，‘替换为的字符’）
-  // 若被替换的有多个，只会替换最前面的一个
-  console.log('122'.replace('2', '3')); // 132
-  
-  // 字符串转换为数组：字符串名称。split（‘分隔符’）
-  // 此分割符需与字符串里面的字符与字符之间的一致才能分割成几个数组元素
-  console.log('1 2 3'.split(' ')); // [ '1', '2', '3' ]
-  
-  // 根据字符返回位置
-  //   字符串。indexOf('字符'，开始的位置）
-  //  从开始位置往后找，若没有返回-1，若有返回第一个匹配的字符的索引号 
-  const str1 = '1213';
-  console.log(str1.indexOf('1', 0)); // 0
-  console.log(str1.indexOf('1')); // 0
-  
-  // 根据位置返回字符
-  // 1，字符串名字。charAt(index)
-  //    返回指定位置的字符（index 字符串的索引号）
-  const str2 = '1213';
-  console.log(str2.charAt(0)); // 1
-  // 2，字符串名字。charCodeAt(index)
-  //    获取指定位置处字符的 ASCII 码（index 字符串的索引号）
-  console.log(str2.charCodeAt(0)); // 49
-  // 3，字符串名字 [index]
-  //    获取指定位置处字符（index 字符串的索引号）
-  console.log(str2[0]); // 1
-  ```
-
-- Date（日期对象）
-
-  ```js
-  // 获取总的毫秒数
-  // 1, 常规写法
-  const date = new Date();
-  console.log(date.valueOf());
-  console.log(date.getTime());
-  // 2, 简易写法
-  console.log(+new Date());
-  // 3,H5 新增写法
-  console.log(Date.now());
-  
-  // 把总的秒数折算成天/小时/分钟/秒
-  console.log(parseInt(date/1000/60/60/24));
-  console.log(parseInt(date/1000/60/60%24));
-  console.log(parseInt(date/1000/60%60));
-  console.log(parseInt(date/1000%60));
-  ```
-
-- RegExp（正则）
-
-- Math
-
   ```javascript
-  console.log(Math.PI); // 3.141592653589793 圆周率
-  console.log(Math.ceil(2.1)); // 3 向上取整
-  console.log(Math.floor(2.8)); // 2 向下取整
-  console.log(Math.round(3.5)); // 4 四舍五入 
-  console.log(Math.max(2,1,56)); // 56 最大值
-  console.log(Math.min(2,1,56)); // 1 最小值
-  console.log(Math.abs(-2.1)); // 2.1 绝对值
-  console.log(Math.random()); // 生成 [0,1) 之间的浮点数
+  const arr1 = new Array(1,2,3);
+  console.log(Object.prototype.toString.call(arr1)); // [object Array]
+  console.log(Array.isArray(arr1)); // true
+  console.log(arr1 instanceof Array); // true
+  console.log(arr1.__proto__ === Array.prototype); // true
+  console.log(Array.prototype.isPrototypeOf(arr1)); // true
   ```
 
-- Set
-
-- Map
-
-  Map 本质上就是键值对的集合，但是普通的 Object 中的键值对中的键只能是字符串。而 ES6 提供的 Map 数据结构类似于对象，但是它的键不限制范围，可以是任意类型，是一种更加完善的 Hash 结构。如果 Map 的键是一个原始数据类型，只要两个键严格相同，就视为是同一个键。
-
-  - 常用方法
-
-    - `map.size`： 返回 Map 结构的成员总数
-
-    - `map.set(key, value)`：设置键名 key 对应的键值 value，然后返回整个 Map 结构，如果 key 是简单数据类型且已经有值，则键值会被更新，否则就新生成该键，若键为引用数据类型，则不会被更改。
-
-    - `map.delete(key)`：该方法删除某个键，返回 true，如果删除失败，返回 false
-
-    - `map.clear()`：清除所有成员，没有返回值
-
-    - `map.get(key)`：该方法读取 key 对应的键值，如果找不到 key，返回 undefined
-
-    - `map.has(key)`：该方法返回一个布尔值，表示某个键是否在当前 Map 对象中
-
-    - Map 结构原生提供三个遍历器生成函数和一个遍历方法
+- 数组元素的增删改查、排序
+  - 增
+    - 数组末尾添加：`arr.push(value)` ， **改变原数组并返回新的长度。**
 
       ```js
-      let m = new Map([
-       [ "foo", 1 ],
-       [ "bar", 2 ],
-      ]);
-
-      for(let key of m.keys()) {
-       console.log(key);
-       // foo
-       // bar
-      }
-      for(let key of m.values()) {
-       console.log(key);
-       // 1
-       // 2
-      }
-      for(let key of m.entries()) {
-       console.log(key);
-       // [ 'foo', 1 ]
-       // [ 'bar', 2 ]
-      }
-      m.forEach((value, key, map) => {
-       console.log(value, key);
-       // 1 foo
-       // 2 bar
-      });
+      const arr = new Array(0,1);
+      console.log(arr.push(2)); // 3
+      console.log(arr); // [ 0, 1, 2]               
+      console.log(arr.push([3])); // 4
+      console.log(arr); // [ 0, 1, 2, 3]               
       ```
 
-- weakMap
+    - 数组开头添加：`arr.unshift(value)` ，**改变原数组并返回新的长度。**
 
-  WeakMap 对象也是一组键值对的集合，其中的键是弱引用的。其键必须是对象，原始数据类型不能作为 key 值，而值可以是任意的。
+      ```js
+      const arr = new Array(0,1);
+      console.log(arr.unshift(2)); // 3
+      console.log(arr); // [ 2, 0, 1]
+      console.log(arr.unshift([3])); // 4
+      console.log(arr); // [ 0, 1, 2, 3]               
+      ```
 
-  >WeakMap 的设计目的在于，有时想在某个对象上面存放一些数据，但是这会形成对于这个对象的引用。一旦不再需要这两个对象，就必须手动删除这个引用，否则垃圾回收机制就不会释放对象占用的内存。而 WeakMap 的键名所引用的对象都是弱引用，即垃圾回收机制不将该引用考虑在内。因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。也就是说，一旦不再需要，WeakMap 里面的键名对象和所对应的键值对会自动消失，不用手动删除引用
+  - 删
+    - 删除最后一个元素：`arr.pop()` ，**改变原数组并返回删除的值。**
 
-  - 常用方法
+      ```js
+      const arr = new Array(1,2);
+      console.log(arr.pop()); // 2
+      console.log(arr); // [ 1 ]
+      ```
 
-    - `m.set(key, value)`：设置键名 key 对应的键值 value，然后返回整个 Map 结构
+    - 删除第一个元素：`arr.shift()` ，**改变原数组并返回删除的值。**
 
-    - `m.delete(key)`：该方法删除某个键，返回 true，如果删除失败，返回 false
+      ```js
+      const arr = new Array(1,2);
+      console.log(arr.shift()); // 1
+      console.log(arr); // [ 2 ]
+      ```
 
-    - `m.get(key)`：该方法读取 key 对应的键值，如果找不到 key，返回 undefined
+  - 改
+    - 添加或删除数组中指定位置的元素：`arr.splice(index,howmany,item1,.....,itemX)` ，**会改变原数组的值。**
 
-    - `m.has(key)`：该方法返回一个布尔值，表示某个键是否在当前 Map 对象中
+      ```js
+      const arr = new Array('A','B','C','D');
+      console.log(arr.splice(2,1)); // [ 'C' ]
+      console.log(arr); // [ 'A', 'B', 'D' ]
+      console.log(arr.splice(2,1,2,'E')); // [ 'D' ] // 删除数组的第三个元素，并在数组的第三个位置添加新元素
+      console.log(arr); // [ 'A', 'B', 2, 'E' ]
+      ```
+
+  - 查
+    - `arr.indexOf(searchElement，[fromIndex])` ，从前往后找的第一个。若找不到返回-1，找到了返回索引值。
+
+      **fromIndex** 为开始查找的位置。如果该索引值大于或等于数组长度，意味着不会在数组里查找，返回 -1。如果参数中提供的索引值是一个负值，则将其作为数组末尾的一个抵消，即 -1 表示从最后一个元素开始查找，-2 表示从倒数第二个元素开始查找，以此类推。注意：如果参数中提供的索引值是一个负值，并不改变其查找顺序，查找顺序仍然是从前向后查询数组。如果抵消后的索引值仍小于 0，则整个数组都将会被查询。其默认值为 0。
+
+      > `indexOf` 使用全等运算（即 ===）判断 searchElement 与数组中包含的元素之间的关系。
+
+      ```js
+      const arr = new Array(1,6,3,4);
+      console.log(arr.indexOf(1, 0)); // 0
+      console.log(arr.indexOf(4, -2)); // 3
+      console.log(arr); // [ 1, 6, 3, 4 ]
+      ```
+
+    - `arr.lastIndexOf（元素）` ， 从后往前找的第一个。若找不到返回-1，找到了返回索引值
+
+      ```js
+      const arr = new Array(1,6,3,4);
+      console.log(arr.lastIndexOf(1)); // 0
+      console.log(arr); // [ 1, 6, 3, 4 ]
+      ```
+
+  - 排序
+    - 颠倒源数组：`arr.reverse()` ， **无参数，改变原数组并返回新数组**
+
+      ```js
+      const arr = new Array(1,6,3,4);
+      console.log(arr.reverse()); // [ 4, 3, 6, 1 ]
+      console.log(arr); // [ 4, 3, 6, 1 ]
+      ```
+
+    - `arr.sort([callback])` 默认排序顺序为按字母升序。
+      - 升序排序：`arr.sort((a,b)=>(a-b))` **改变原数组并返回新数组**。
+        其中回调函数的返回值>0 则 b 会被排列到 a 之前，返回值=0 则 a 与 b 的相对位置不变，返回值<0，则 a 会排列到 b 之前。
+
+        ```js
+        const arr = new Array(1,6,3,4);
+        console.log(arr.sort(function(a,b){return (a-b);})); // [ 1, 2, 4, 6 ]
+        console.log(arr); // [ 1, 2, 4, 6 ]
+        ```
+
+      - 降序排序：`arr.sort((a,b)=>(b-a))` ， **改变原数组并返回新数组**
+        其中回调函数的返回值>0 则 b 会被排列到 a 之前，返回值=0 则 a 与 b 的相对位置不变，返回值<0，则 a 会排列到 b 之前。
+
+        ```js
+        const arr = new Array(1,6,3,4);
+        console.log(arr.sort(function(a,b){return (b-a);})); // [ 6, 4, 3, 1 ]
+        console.log(arr); // [ 6, 4, 3, 1 ]
+        ```
+
+- 数组的片段浅拷贝、转换成字符串、拼接（不改变原数组）
+  - 数组元素片段浅拷贝
+
+    `arr.slice([begin[, end]])`
+    slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（**包括 begin，不包括 end**）。**原始数组不会被改变。**
+  
+    ```js
+    let arr = new Array(1,2);
+    console.log(arr.slice(0,1)); // [ 1 ]
+    ```
+
+  - 转换成字符串
+    - `arr.toString()`
+
+      ```js
+      let arr = new Array(1,2);
+      console.log(arr.toString()); // 1,2
+      ```
+
+    - `arr.join(`分隔符`)`
+
+      ```js
+      let arr = new Array(1,2);
+      console.log(arr.join('-')); // 1-2
+      ```
+  
+  - 拼接
+    - `arr.concat(arr1, arr2, ...)`
+
+      ```js
+      let arr = new Array(1,2);
+      let arr1 = [ 3 ];
+      let arr2 = [ 4 ];
+      console.log(arr.concat(arr1,arr2)); // [ 1, 2, 3, 4 ]
+      console.log(arr); // [ 1, 2 ]
+      ```
+
+    - es6 新增：`[...arr1, arr2]`
+
+      ```js
+      let arr = new Array(1,2);
+      let arr1 = [ 3 ];
+      console.log([...arr,arr1]); // [ 1, 2, [ 3 ] ]
+      console.log(arr); // [ 1, 2 ]
+      ```
+
+- 数组的其他方法
+  - `forEach()` ，对数组的每个元素执行一次给定的函数。
+
+    `arr.forEach(function(currentValue [, index [, array]])[, thisArg])`
+
+    currentValue：当前元素
+
+    index：当前元素的索引值
+
+    array：forEach() 方法正在操作的数组。
+
+    thisArg：当执行回调函数时，用作 this 的值
+
+    ```js
+    let arr = new Array(1,2);
+    arr.forEach(function(value, index, array) {
+      console.log(value + ' ' + index + ' ' + array);
+      // 1 0 1,2
+      // 2 1 1,2
+    });
+    ```
+
+  - `filter()` ， 方法创建一个新数组，其包含通过所提供函数实现的测试的所有元素。
+    `let newArray = arr.filter(function(element[, index[, array]])[, thisArg])`
+
+    element：数组中当前正在处理的元素。
+
+    index：正在处理的元素在数组中的索引。
+
+    array：调用了 filter 的数组本身。
+
+    thisArg：执行回调函数时，用于 this 的值。
+
+    filter() 为数组中的每个元素调用一次 callback 函数，并**利用**所有使得 callback 返回 true 或等价于 true 的值的**元素创建一个新数组**。callback 只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用。那些没有通过 callback 测试的元素会被跳过，不会被包含在新数组中。
+
+    **filter 不会改变原数组，它返回过滤后的新数组。**
+
+    ```js
+    let arr = new Array(1,2,3);
+    let arr1 = arr.filter(function(e) {
+      return e > 1;
+    });
+    console.log(arr1); // [ 2, 3 ]
+    ```
+
+  - `reduce()` 方法对数组中的每个元素按序执行回调函数，每一次运行回调函数会将先前元素的计算结果作为参数传入，最后将其结果汇总为单个返回值。
+
+    第一次执行回调函数时，不存在“上一次的计算结果”。如果需要回调函数从数组索引为 0 的元素开始执行，则需要传递初始值。否则，数组索引为 0 的元素将被作为初始值 initialValue，迭代器将从第二个元素开始执行（索引为 1 而不是 0）。
+
+    `arr.reduce(function(total, currentValue[, currentIndex[, array]])[, initialValue)]`
+
+    total：初始值，或者计算结束后的返回值。
+
+    currentValue：当前元素。
+
+    currentIndex：当前元素的索引。
+
+    array：当前元素所属的数组对象。
+
+    initialValue：传递给函数的初始值。
+
+    ```js
+    let arr = new Array(1,2,5);
+    let getSum = function(total,num) {
+     console.log(total + ' ' + num);
+     return total + Math.round(num); 
+    };
+    console.log(arr.reduce(getSum));
+    // 1 2
+    // 3 5
+    // 8 
+    // 未给定初始值，回调的迭代从第二个元素开始执行
+    console.log(arr.reduce(getSum,0));
+    // 0 1
+    // 1 2
+    // 3 5
+    // 8
+    // 回调函数从第一个元素开始执行
+    console.log(arr.reduce(getSum,5)); // 12
+    console.log(arr); // [ 1, 2, 5 ]
+    ```
+
+  - `map()` 方法创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成。
+
+    `var new_array = arr.map(function     (currentValue[, index[, array]]) {
+      // Return element for new_array
+    }[, thisArg])`
+
+    currentValue：当前元素
+
+    index：当前元素的索引值
+
+    array：map 方法调用的数组。
+
+    thisArg：当执行回调函数时，用作 this 的值
+
+    ```js
+    let arr = new Array(1,2);
+    let arr1 = arr.map(function(val, index, array){
+      console.log(val + ' ' + index + ' ' + array);
+      // 1 0 1,2
+      // 2 1 1,2
+      return val+1;
+    });
+    console.log(arr1); // [ 2, 3 ]
+    ```
+
+  - `every()` 方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值。
+
+    如果回调函数的每一次返回都为 truthy 值，返回 true，否则返回 false。
+
+    `arr.every(function(element[, index[, array]])[, thisArg])`
+
+    element：当前元素
+
+    index：当前元素的索引值
+
+    array：当前元素所属的数组对象
+
+    thisArg：当执行回调函数时，用作 this 的值
+
+    ```js
+    console.log([].every(e => e > 0)); // true
+    console.log([1,-1,2].every(e => e > 0)); // false
+    console.log([1,1,2].every(e => e > 0)); // true
+    ```
+
+  - `some()` 方法测试数组中是不是至少有 1 个元素通过了被提供的函数测试。它返回的是一个 Boolean 类型的值。
+
+    数组中有至少一个元素通过回调函数的测试就会返回 true；所有元素都没有通过回调函数的测试返回值才会为 false。
+
+    `arr.some(function(element[, index[, array]])[, thisArg])`
+
+    element：当前元素
+
+    index：当前元素的索引值
+
+    array：当前元素所属的数组对象
+
+    thisArg：当执行回调函数时，用作 this 的值
+
+    ```js
+    console.log([].some(e => e > 0)); // false
+    console.log([1,-1,2].some(e => e > 0)); // true
+    console.log([1,1,2].some(e => e > 0)); // true
+    ```
+
+##### Function（函数）
+
+##### String（字符串对象）
+
+```js
+// 拼接字符串：字符串名称。concat（字符串名称，...）
+// concat() 方法用于连接两个或多个字符串，拼接字符串，等效于+，+更常用
+console.log('000'.concat('123','456')); // 000123456 // 截取字符串：字符串名称。substr（start,length）
+// 从 start 位置开始（索引号），length 取的个数
+console.log('123'.substr(0,2)); // 12
+  
+// 替换字符串：字符串名称。replace（‘被替换的字符’，‘替换为的字符’）
+// 若被替换的有多个，只会替换最前面的一个
+console.log('122'.replace('2', '3')); // 132
+  
+// 字符串转换为数组：字符串名称。split（‘分隔符’）
+// 此分割符需与字符串里面的字符与字符之间的一致才能分割成几个数组元素
+console.log('1 2 3'.split(' ')); // [ '1', '2', '3' ]
+  
+// 根据字符返回位置
+//   字符串。indexOf('字符'，开始的位置）
+//  从开始位置往后找，若没有返回-1，若有返回第一个匹配的字符的索引号 
+const str1 = '1213';
+console.log(str1.indexOf('1', 0)); // 0
+console.log(str1.indexOf('1')); // 0
+  
+// 根据位置返回字符
+// 1，字符串名字。charAt(index)
+//    返回指定位置的字符（index 字符串的索引号）
+const str2 = '1213';
+console.log(str2.charAt(0)); // 1
+// 2，字符串名字。charCodeAt(index)
+//    获取指定位置处字符的 ASCII 码（index 字符串的索引号）
+console.log(str2.charCodeAt(0)); // 49
+// 3，字符串名字 [index]
+//    获取指定位置处字符（index 字符串的索引号）
+console.log(str2[0]); // 1
+```
+
+##### Date（日期对象）
+
+```js
+// 获取总的毫秒数
+// 1, 常规写法
+const date = new Date();
+console.log(date.valueOf());
+console.log(date.getTime());
+// 2, 简易写法
+console.log(+new Date());
+// 3,H5 新增写法
+console.log(Date.now());
+  
+// 把总的秒数折算成天/小时/分钟/秒
+console.log(parseInt(date/1000/60/60/24));
+console.log(parseInt(date/1000/60/60%24));
+console.log(parseInt(date/1000/60%60));
+console.log(parseInt(date/1000%60));
+```
+
+##### RegExp（正则）
+
+##### Math
+
+```javascript
+console.log(Math.PI); // 3.141592653589793 圆周率
+console.log(Math.ceil(2.1)); // 3 向上取整
+console.log(Math.floor(2.8)); // 2 向下取整
+console.log(Math.round(3.5)); // 4 四舍五入 
+console.log(Math.max(2,1,56)); // 56 最大值
+console.log(Math.min(2,1,56)); // 1 最小值
+console.log(Math.abs(-2.1)); // 2.1 绝对值
+console.log(Math.random()); // 生成 [0,1) 之间的浮点数
+```
+
+##### Set
+
+##### Map
+
+Map 本质上就是键值对的集合，但是普通的 Object 中的键值对中的键只能是字符串。而 ES6 提供的 Map 数据结构类似于对象，但是它的键不限制范围，可以是任意类型，是一种更加完善的 Hash 结构。如果 Map 的键是一个原始数据类型，只要两个键严格相同，就视为是同一个键。
+
+- 常用方法
+  - `map.size`： 返回 Map 结构的成员总数
+  - `map.set(key, value)`：设置键名 key 对应的键值 value，然后返回整个 Map 结构，如果 key 是简单数据类型且已经有值，则键值会被更新，否则就新生成该键，若键为引用数据类型，则不会被更改。
+  - `map.delete(key)`：该方法删除某个键，返回 true，如果删除失败，返回 false
+  - `map.clear()`：清除所有成员，没有返回值
+  - `map.get(key)`：该方法读取 key 对应的键值，如果找不到 key，返回 undefined
+  - `map.has(key)`：该方法返回一个布尔值，表示某个键是否在当前 Map 对象中
+  - Map 结构原生提供三个遍历器生成函数和一个遍历方法
+
+    ```js
+    let m = new Map([
+     [ "foo", 1 ],
+     [ "bar", 2 ],
+    ]);
+
+    for(let key of m.keys()) {
+     console.log(key);
+     // foo
+     // bar
+    }
+    for(let key of m.values()) {
+     console.log(key);
+     // 1
+     // 2
+    }
+    for(let key of m.entries()) {
+     console.log(key);
+     // [ 'foo', 1 ]
+     // [ 'bar', 2 ]
+    }
+    m.forEach((value, key, map) => {
+     console.log(value, key);
+     // 1 foo
+     // 2 bar
+    });
+    ```
+
+##### weakMap
+
+WeakMap 对象也是一组键值对的集合，其中的键是弱引用的。其键必须是对象，原始数据类型不能作为 key 值，而值可以是任意的。
+
+>WeakMap 的设计目的在于，有时想在某个对象上面存放一些数据，但是这会形成对于这个对象的引用。一旦不再需要这两个对象，就必须手动删除这个引用，否则垃圾回收机制就不会释放对象占用的内存。而 WeakMap 的键名所引用的对象都是弱引用，即垃圾回收机制不将该引用考虑在内。因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。也就是说，一旦不再需要，WeakMap 里面的键名对象和所对应的键值对会自动消失，不用手动删除引用
+
+- 常用方法
+  - `m.set(key, value)`：设置键名 key 对应的键值 value，然后返回整个 Map 结构
+  - `m.delete(key)`：该方法删除某个键，返回 true，如果删除失败，返回 false
+  - `m.get(key)`：该方法读取 key 对应的键值，如果找不到 key，返回 undefined
+  - `m.has(key)`：该方法返回一个布尔值，表示某个键是否在当前 Map 对象中
 
 #### 数据类型的判断
 
@@ -1004,19 +973,21 @@ console.log(~~1.9); // 1
 
 >虽然浏览器可以进行垃圾自动回收，但是当代码比较复杂时，垃圾回收所带来的代价比较大，所以应该尽量减少垃圾回收
 
-- 对数组进行优化：在清空一个数组时，最简单的方法就是给其赋值为 [ ]，但是与此同时会创建一个新的空对象，可以将数组的长度设置为 0，以此来达到清空数组的目的
+- 对数组进行优化：在清空一个数组时，最简单的方法就是给其赋值为 [ ]，但是与此同时会创建一个新的空对象，可以将数组的长度设置为 0，以此来达到清空数组的目的。
 
-- 对 object 进行优化：对象尽量复用，对于不再使用的对象，就将其设置为 null，尽快被回收
+- 对 object 进行优化：对象尽量复用，对于不再使用的对象，就将其设置为 null，尽快被回收。
+
+- 对函数进行优化：在循环中的函数表达式，如果可以复用，尽量放在函数的外面。
 
 哪些情况会导致内存泄漏（无法垃圾回收就是内存泄露）：
 
-- 意外的全局变量：由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收
+- 意外的全局变量：由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收。
 
-- 被遗忘的定时器或回调函数：由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收
+- 被遗忘的定时器或回调函数：由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收。
 
-- 脱离 DOM 的引用：获取一个 DOM 元素的引用，而后面这个元素被删除，由于一直保留了对这个元素的引用，所以它也无法被回收
+- 脱离 DOM 的引用：获取一个 DOM 元素的引用，而后面这个元素被删除，由于一直保留了对这个元素的引用，所以它也无法被回收。
 
-- 闭包：不合理的使用闭包，从而导致某些变量一直被留在内存当中
+- 闭包：不合理的使用闭包，从而导致某些变量一直被留在内存当中。
 
 ## 3. 面向对象
 

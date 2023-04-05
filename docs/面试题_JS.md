@@ -3,9 +3,9 @@ title: 面试题_JS
 permalink: /interview_questions_JS/
 ---
 
-### 数据类型
+## 数据类型
 
-1，`Object.is(value1, value2)` 与比较操作符 “ === ”、” == “ 的区别？
+### 1. `Object.is(value1, value2)` 与比较操作符 “ === ”、” == “ 的区别？
 
 - 使用双等号（==）进行相等判断时，如果两边的类型不一致，则会进行强制类型转化后再进行比较。
 
@@ -20,12 +20,12 @@ permalink: /interview_questions_JS/
   console.log(Object.is(NaN, NaN)); // true 
   ```
 
-2，如何判断一个对象是空对象？
+### 2. 如何判断一个对象是空对象？
 
 - `console.log(JSON.stringify({}) == '{}'); // true`
 - `console.log(Object.keys({}).length <= 0); // true`
 
-3，0.1 + 0.2 != 0.3
+### 3. 0.1 + 0.2 != 0.3
 
 现象：
 
@@ -95,13 +95,13 @@ JavaScript 是以 64 位双精度浮点数存储所有 Number 类型值，按照
   withinErrorMargin(0.1+0.2, 0.3)
   ```
 
-4，引用类型和包装类型的区别？
+### 4. 引用类型和包装类型的区别？
 
 引用类型和包装类型的主要区别就是对象的生存期，使用 new 操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中，而自基本类型则只存在于一行代码的执行瞬间，然后立即被销毁，这意味着我们不能在运行时为基本类型添加属性和方法。
 
-### JS 基础
+## JS 基础
 
-1，Map 和 Object 的区别
+### 1. Map 和 Object 的区别
 
 - 同名碰撞
 
@@ -143,9 +143,9 @@ JavaScript 是以 64 位双精度浮点数存储所有 Number 类型值，按照
 
   - Object 不是 iterable，不可以被迭代，不能用 for...of 遍历
 
-2，JavaScript 类数组对象的定义？
+### 2. JavaScript 类数组对象的定义？
 
-一个拥有 length 属性和若干索引属性的对象就可以被称为类数组对象，类数组对象和数组类似，但是不能调用数组的方法。常见的类数组对象有 arguments 和 DOM 方法的返回结果，还有一个函数也可以被看作是类数组对象，因为它含有 length 属性值，代表可接收的参数个数
+一个拥有 length 属性和若干索引属性的对象就可以被称为类数组对象，类数组对象和数组类似，但是不能调用数组的方法。常见的类数组对象有 arguments 和 DOM 方法的返回结果，还有一个函数也可以被看作是类数组对象，因为它含有 length 属性值，代表可接收的参数个数。
 
 - 常见的类数组转换为数组的方法：
 
@@ -161,11 +161,39 @@ JavaScript 是以 64 位双精度浮点数存储所有 Number 类型值，按照
 
   - 使用展开运算符将类数组转化成数组
 
-3，为什么函数的 arguments 参数是类数组而不是数组？如何遍历类数组？
+### 3. 为什么函数的 arguments 参数是类数组而不是数组？如何遍历类数组？
 
   arguments 是一个对象，它的属性是从 0 开始依次递增的数字，还有 callee 和 length 等属性，与数组相似；但是它却没有数组常见的方法属性，如 forEach, reduce 等，所以叫它们类数组。
 
-4，Unicode、UTF-8、UTF-16、UTF-32 的区别？
+  遍历类数组：
+
+- 使用 call 和 apply 方法。
+
+   ```js
+   function foo() {
+     Array.prototype.forEach.call(arguments, e => console.log(e));
+   }
+   ```
+
+- Array.from 方法将类数组转化成数组。
+
+  ```js
+  function foo() {
+    const arrArgs = Array.from(arguments);
+    arrArgs.forEach( e => console.log(e));
+  }
+  ```
+
+- 使用展开运算符将类数组转化成数组。
+
+  ```js
+  function foo() {
+    const arrArgs = [...arguments];
+    arrArgs.forEach( e => console.log(e));
+  }
+  ```
+
+### 4. Unicode、UTF-8、UTF-16、UTF-32 的区别？
 
 - Unicode 是编码字符集（字符集），而 UTF-8、UTF-16、UTF-32 是字符集编码（编码规则）；
 
@@ -175,7 +203,7 @@ JavaScript 是以 64 位双精度浮点数存储所有 Number 类型值，按照
 
 - 如果字符内容全部英文或英文与其他文字混合，但英文占绝大部分，那么用 UTF-8 就比 UTF-16 节省了很多空间；而如果字符内容全部是中文这样类似的字符或者混合字符中中文占绝大多数，那么 UTF-16 就占优势了，可以节省很多空间。
 
-5，ES6 模块与 CommonJS 模块有什么异同？
+### 5. ES6 模块与 CommonJS 模块有什么异同？
 
 - 不同点：
 
@@ -191,13 +219,13 @@ JavaScript 是以 64 位双精度浮点数存储所有 Number 类型值，按照
 
   - CommonJS 和 ES6 Module 都可以对引⼊的对象进⾏赋值，即对对象内部属性的值进⾏改变。
 
-6，for...in 和 for...of 的区别？
+### 6. for...in 和 for...of 的区别？
 
 - for… in 会遍历对象的整个原型链，性能非常差不推荐使用，而 for … of 只遍历当前对象不会遍历原型链
   > for…of 是 ES6 新增的遍历方式，允许遍历一个含有 iterator 接口的数据结构（数组、字符串、Map、Set、类数组对象【伪数组】等，注意：对象没有 iterator）并且返回各项的值
 - 对于数组的遍历，for…in 会返回数组中所有可枚举的属性（包括原型链上可枚举的属性），for…of 只返回数组的下标对应的属性值
 
-7，如何实现深拷贝？
+### 7. 如何实现深拷贝？
 
 - `JSON.stringify()`
 
@@ -229,54 +257,55 @@ JavaScript 是以 64 位双精度浮点数存储所有 Number 类型值，按照
   }
   ```
 
-  8，`(a == 1 && a == 2 && a == 3)`有可能是 true 吗？
-  - 方案一：重写 toString() 或 valueOf()
+### 8. `(a == 1 && a == 2 && a == 3)`有可能是 true 吗？
 
-    ```js
-    let a = {  
-        i: 1,  
-        toString: function () {    
-            return a.i++;  
-        }
-    }
-    console.log(a == 1 && a == 2 && a == 3); // true
-    ```
+- 方案一：重写 toString() 或 valueOf()
 
-  - 方案二：数组
+  ```js
+  let a = {  
+      i: 1,  
+      toString: function () {    
+          return a.i++;  
+      }
+  }
+  console.log(a == 1 && a == 2 && a == 3); // true
+  ```
 
-    数组的 toString 接口默认调用数组的 join 方法，重写 join 方法。定义 a 为数字，每次比较时就会调用 toString() 方法，我们把数组的 shift 方法覆盖 toString 即可：
+- 方案二：数组
 
-    ```js
-    let a = [1,2,3];
-    a.toString = a.shift;
-    console.log(a == 1 && a == 2 && a == 3); // true
-    ```
+  数组的 toString 接口默认调用数组的 join 方法，重写 join 方法。定义 a 为数字，每次比较时就会调用 toString() 方法，我们把数组的 shift 方法覆盖 toString 即可：
 
-    当然把 toString 改为 valueOf 也是一样效果：
+  ```js
+  let a = [1,2,3];
+  a.toString = a.shift;
+  console.log(a == 1 && a == 2 && a == 3); // true
+  ```
 
-    ```js
-    let a = [1,2,3];
-    a. valueOf  = a.shift;
-    console.log(a == 1 && a == 2 && a == 3); // true
-    ```
+  当然把 toString 改为 valueOf 也是一样效果：
 
-  - 方案三：使用 Object.defineProperty()
+  ```js
+  let a = [1,2,3];
+  a. valueOf  = a.shift;
+  console.log(a == 1 && a == 2 && a == 3); // true
+  ```
 
-    Object.defineProperty() 用于定义对象中的属性，接收三个参数：object 对象、对象中的属性，属性描述符。属性描述符中 get: 访问该属性时自动调用。
+- 方案三：使用 Object.defineProperty()
 
-    ```js
-    var  _a = 1;
-    Object.defineProperty(this,'a',{  
-        get:function(){    
-            return _a++  
-        }
-    })
-    console.log(a===1 && a===2 && a===3)//true
-    ```
+  Object.defineProperty() 用于定义对象中的属性，接收三个参数：object 对象、对象中的属性，属性描述符。属性描述符中 get: 访问该属性时自动调用。
 
-### 异步编程
+  ```js
+  var  _a = 1;
+  Object.defineProperty(this,'a',{  
+      get:function(){    
+          return _a++  
+      }
+  })
+  console.log(a===1 && a===2 && a===3)//true
+  ```
 
-1，什么是回调函数？回调函数有什么缺点？如何解决回调地狱问题？
+## 异步编程
+
+### 1. 什么是回调函数？回调函数有什么缺点？如何解决回调地狱问题？
 
 - 回调函数是一个作为变量传递给另一个函数的函数，它在主体函数执行完之后再执行
 
@@ -288,7 +317,7 @@ JavaScript 是以 64 位双精度浮点数存储所有 Number 类型值，按照
 
   - 不能直接 return
 
-- 如何解决回调函数：
+- 如何解决回调地狱问题：
 
   - Promise
 
