@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>图片懒加载</title>
 </head>
-
 <body>
-  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
-  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
-  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
-  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <img src="../docs/images/stack_memory.png" data-imgsrc="../docs/images/heap_memory.png" />
+  <img src="../docs/images/stack_memory.png" data-imgsrc="../docs/images/heap_memory.png" />
+  <img src="../docs/images/stack_memory.png" data-imgsrc="../docs/images/heap_memory.png" />
+  <img src="../docs/images/stack_memory.png" data-imgsrc="../docs/images/heap_memory.png" />
 
-  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
-  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
-  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
-  <img src="../images/stack_memory.png" data-imgsrc="../images/heap_memory.png" />
+  <img src="../docs/images/stack_memory.png" data-imgsrc="../docs/images/heap_memory.png" />
+  <img src="../docs/images/stack_memory.png" data-imgsrc="../docs/images/heap_memory.png" />
+  <img src="../docs/images/stack_memory.png" data-imgsrc="../docs/images/heap_memory.png" />
+  <img src="../docs/images/stack_memory.png" data-imgsrc="../docs/images/heap_memory.png" />
   <script>
     let imgs = [...document.querySelectorAll('img')];
     let removedImgs = [];
@@ -25,13 +23,13 @@
         /*
         // 判断图片是否在可视区域内（使用 offsetTop、scrollTop、innerHeight）
         // 获取视口区域的滚动高度
-  let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
         // 获取浏览器窗口的视口高度
-  let innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-if(img.offsetTop < scrollTop + innerHeight) {
-            img.src = img.getAttribute('data-imgsrc');
-            removedImgs.push(img);
-}
+        let innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        if(img.offsetTop < scrollTop + innerHeight) {
+          img.src = img.getAttribute('data-imgsrc');
+          removedImgs.push(img);
+        }
         */
 
         // 判断图片是否在可视区域内（使用 getBoundingClientRect ）
@@ -50,13 +48,15 @@ if(img.offsetTop < scrollTop + innerHeight) {
         document.removeEventListener('scroll', lazyLoad);
       }
     };
-    // window.onscroll = lazyLoad;
+    window.onscroll = lazyLoad;
     // document.addEventListener('scroll', lazyLoad);
 
-    /* 实现图片懒加载（方法二）
-        Intersection Observer可以不用监听scroll事件，
+    /*
+      实现图片懒加载（方法二）
+        Intersection Observer 可以不用监听 scroll 事件，
         做到元素一可见便调用回调，在回调里面我们来判断元素是否可见。
     */
+    /*
     if ("IntersectionObserver" in window) {
       let lazyImgObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
@@ -76,6 +76,7 @@ if(img.offsetTop < scrollTop + innerHeight) {
         lazyImgObserver.observe(img);
       })
     }
+    */
   </script>
 </body>
 

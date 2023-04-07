@@ -22,17 +22,19 @@ BOM（Browser Object Model）即浏览器对象模型，它提供了独立于内
 
 - `history`
 
-## 2.window 对象的
+## 2.window 对象
 
 ### 常用属性
 
-- `window.innerHeight`： 浏览器可视区的高度。
+- `window.innerHeight`：网页在当前窗口中可见部分的高度，即“视口”（viewport）的大小（单位像素）。
+- `window.innerWidth`：网页在当前窗口中可见部分的宽度。
 
 ### 常用事件
 
 1. 窗口加载事件
 
    - `window.onload = function() {};` 或者 `window.addEventListener("load", function() {});`
+
      window.onload 是窗口（页面）加载事件，当文档内容完全加载完成后会触发事件（包括图像、脚本文件、CSS 文件）。
 
    - `document.addEventListener('DOMContentLoaded', function() {});`
