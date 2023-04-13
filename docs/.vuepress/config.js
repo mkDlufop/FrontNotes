@@ -23,6 +23,7 @@ module.exports = {
         text: 'Vue',
         items: [
           { text: 'Vue 基础', link: '/vue_base/' },
+          { text: 'Vue3', link: '/vue3/' },
           { text: 'Vuex', link: '/vue_vuex/' },
           { text: 'Vue Router', link: '/vue_router/' },
           { text: 'Vue CLI', link: '/vue_cli/' },

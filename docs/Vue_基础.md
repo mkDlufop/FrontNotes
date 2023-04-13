@@ -47,25 +47,25 @@ permalink: /vue_base/
 
 let number = 18
 let person = {
- name: 'zhangsan',
- sex: 'nan',
+  name: 'zhangsan',
+  sex: 'nan',
 }
 
 Object.defineProperty(person, 'age', {
- // value: 18,
- // enumerable: true, // 控制属性是否可以被枚举，默认值为 false
- // writable: true, // 控制属性是否可以被修改，默认值是 false
- // configurable: true // 控制属性是否可以被删除，默认值是 false
+  // value: 18,
+  // enumerable: true, // 控制属性是否可以被枚举，默认值为 false
+  // writable: true, // 控制属性是否可以被修改，默认值是 false
+  // configurable: true // 控制属性是否可以被删除，默认值是 false
 
- // 当有人读取 person 的 age 属性时，get 函数（getter）就会被调用，且返回值就是 age 的值
- get() {
-  return number
- },
+  // 当有人读取 person 的 age 属性时，get 函数（getter）就会被调用，且返回值就是 age 的值
+  get() {
+    return number
+  },
 
- // 当有人修改 person 的 age 属性时，set 函数（setter）就会被调用，且会收到修改的具体值
- set(value) {
-  number = value
- }
+  // 当有人修改 person 的 age 属性时，set 函数（setter）就会被调用，且会收到修改的具体值
+  set(value) {
+    number = value
+  }
 });
 
 // 输出一个数组，数组里存的是 person 对象中所有属性的属性名
@@ -82,7 +82,7 @@ Object.defineProperty(person, 'age', {
 
 2. Vue 中数据代理的好处
 
-   更加方便的操作 data 中的数据。
+   更加方便的操作 data 中的数据。例如在页面中使用 _data.name 可以简写成 name。
 
 3. 基本原理
 
@@ -96,28 +96,29 @@ Object.defineProperty(person, 'age', {
 
 2. 如何监测对象中的数据？
 
-    通过 setter 实现监视，且要在 new Vue 时就传入要监测的数据：
-
-    （1）对象中后追加的属性，Vue 默认不做响应式处理。
-
-    （2）如需给后添加的属性做响应式，请使用如下 API：` Vue.set(target, propertyName/index, value) ` 或 `vm.$set(target, propertyName/index, value)`。
+    通过 Object.defineProperty() 的 setter 实现监视，且要在 new Vue 时就传入要监测的数据。
+    - 对象中后追加的属性，Vue 默认不做响应式处理。
+    - 如需给后添加的属性做响应式，请使用如下 API：` Vue.set(target, propertyName/index, value) ` 或 `vm.$set(target, propertyName/index, value)` 或 `Vue.delete()` 或 `vm.$delete()`。
 
 3. 如何监测数组中的数据？
 
     通过包裹数组更新元素的方法实现，本质就是做了两件事情：
+    1. 调用原生对应的方法对数组进行更新。
+    2. 重新解析模板，进而更新页面。
 
-    （1） 调用原生对应的方法对数组进行更新。
-
-    （2） 重新解析模板，进而更新页面。
     数组中的每一项没有单独为其服务的 setter，所以整体修改数组中的每一项 Vue 不会监测，即`arr[0] = …`没有效果。
 
-4. 在 Vue 修改数组中的某个元素一定要用如下方法：
+   在 Vue 修改数组中的某个元素一定要用如下方法：
 
-    （1）. 使用这些 API：`push()`、`pop()`、`shift()`、`unshift()`、`splice()`、`sort()`、`reverse()`
+   - 使用这些 API：`push()`、`pop()`、`shift()`、`unshift()`、`splice()`、`sort()`、`reverse()`
 
-    （2）.`Vue.set()` 或 `vm.$set()`
+   - `Vue.set()` 或 `vm.$set()` 或 `Vue.delete()` 或 `vm.$delete()`
 
-5. 特别注意 Vue.set() 和 vm.$set() 不能给 vm 或 vm 的根数据对象添加对象，也就是括号内第一个值不能是 vm。
+4. 存在的问题：
+   - 新增属性、删除属性，界面不会更新。
+   - 直接通过下标修改数组，界面不会更新。
+
+> 特别注意 `Vue.set()` 和 `vm.$set()` 不能给 vm 或 vm 的根数据对象添加对象，也就是括号内第一个值不能是 vm。
 
 ### 事件处理
 
