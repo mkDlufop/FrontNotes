@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vuex | mkDlufop`s notes</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Just Hack">
+    
+    <link rel="preload" href="/FrontNotes/assets/css/0.styles.d09f69a5.css" as="style"><link rel="preload" href="/FrontNotes/assets/js/app.8797468b.js" as="script"><link rel="preload" href="/FrontNotes/assets/js/2.812b2437.js" as="script"><link rel="preload" href="/FrontNotes/assets/js/12.6dd6cba5.js" as="script"><link rel="prefetch" href="/FrontNotes/assets/js/10.7c190043.js"><link rel="prefetch" href="/FrontNotes/assets/js/11.73fa3ac4.js"><link rel="prefetch" href="/FrontNotes/assets/js/13.a25d8ba7.js"><link rel="prefetch" href="/FrontNotes/assets/js/14.75626245.js"><link rel="prefetch" href="/FrontNotes/assets/js/15.55900a84.js"><link rel="prefetch" href="/FrontNotes/assets/js/16.8efb938f.js"><link rel="prefetch" href="/FrontNotes/assets/js/17.0b442e73.js"><link rel="prefetch" href="/FrontNotes/assets/js/18.2d5f2a6d.js"><link rel="prefetch" href="/FrontNotes/assets/js/19.80444ef9.js"><link rel="prefetch" href="/FrontNotes/assets/js/20.f3ed9b86.js"><link rel="prefetch" href="/FrontNotes/assets/js/21.89c05824.js"><link rel="prefetch" href="/FrontNotes/assets/js/22.50b941df.js"><link rel="prefetch" href="/FrontNotes/assets/js/23.0aec865b.js"><link rel="prefetch" href="/FrontNotes/assets/js/24.b3620ade.js"><link rel="prefetch" href="/FrontNotes/assets/js/25.a6fa4d8b.js"><link rel="prefetch" href="/FrontNotes/assets/js/26.d42f8af3.js"><link rel="prefetch" href="/FrontNotes/assets/js/27.cc3bad16.js"><link rel="prefetch" href="/FrontNotes/assets/js/3.12cb484e.js"><link rel="prefetch" href="/FrontNotes/assets/js/4.1d392c36.js"><link rel="prefetch" href="/FrontNotes/assets/js/5.27c6bbc0.js"><link rel="prefetch" href="/FrontNotes/assets/js/6.ed33e795.js"><link rel="prefetch" href="/FrontNotes/assets/js/7.a064bae5.js"><link rel="prefetch" href="/FrontNotes/assets/js/8.8348664e.js"><link rel="prefetch" href="/FrontNotes/assets/js/9.101995f3.js">
+    <link rel="stylesheet" href="/FrontNotes/assets/css/0.styles.d09f69a5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FrontNotes/" class="home-link router-link-active"><!----> <span class="site-name">mkDlufop`s notes</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FrontNotes/html/" class="nav-link">
+  HTML
+</a></div><div class="nav-item"><a href="/FrontNotes/css/" class="nav-link">
+  CSS
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JS" class="dropdown-title"><span class="title">JS</span> <span class="arrow down"></span></button> <button type="button" aria-label="JS" class="mobile-dropdown-title"><span class="title">JS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/FrontNotes/js_ecmascript/" class="nav-link">
+  ECMAScript
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/js_dom/" class="nav-link">
+  DOM
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/js_bom/" class="nav-link">
+  BOM
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/FrontNotes/vue_base/" class="nav-link">
+  Vue 基础
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/vue3/" class="nav-link">
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/vue_vuex/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Vuex
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/vue_router/" class="nav-link">
+  Vue Router
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/vue_cli/" class="nav-link">
+  Vue CLI
+</a></li></ul></div></div><div class="nav-item"><a href="/FrontNotes/browser/" class="nav-link">
+  浏览器
+</a></div><div class="nav-item"><a href="/FrontNotes/computer_network/" class="nav-link">
+  计算机网络
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="最佳实践" class="dropdown-title"><span class="title">最佳实践</span> <span class="arrow down"></span></button> <button type="button" aria-label="最佳实践" class="mobile-dropdown-title"><span class="title">最佳实践</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/FrontNotes/ui_optimize/" class="nav-link">
+  用户界面优化
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/performance_optimize/" class="nav-link">
+  性能优化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_HTML/" class="nav-link">
+  面试题_HTML
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_CSS/" class="nav-link">
+  面试题_CSS
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_JS/" class="nav-link">
+  面试题_JS
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_Vue/" class="nav-link">
+  面试题_Vue
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_network/" class="nav-link">
+  面试题_计算机网络
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/mkDlufop/FrontNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FrontNotes/html/" class="nav-link">
+  HTML
+</a></div><div class="nav-item"><a href="/FrontNotes/css/" class="nav-link">
+  CSS
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JS" class="dropdown-title"><span class="title">JS</span> <span class="arrow down"></span></button> <button type="button" aria-label="JS" class="mobile-dropdown-title"><span class="title">JS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/FrontNotes/js_ecmascript/" class="nav-link">
+  ECMAScript
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/js_dom/" class="nav-link">
+  DOM
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/js_bom/" class="nav-link">
+  BOM
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/FrontNotes/vue_base/" class="nav-link">
+  Vue 基础
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/vue3/" class="nav-link">
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/vue_vuex/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Vuex
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/vue_router/" class="nav-link">
+  Vue Router
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/vue_cli/" class="nav-link">
+  Vue CLI
+</a></li></ul></div></div><div class="nav-item"><a href="/FrontNotes/browser/" class="nav-link">
+  浏览器
+</a></div><div class="nav-item"><a href="/FrontNotes/computer_network/" class="nav-link">
+  计算机网络
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="最佳实践" class="dropdown-title"><span class="title">最佳实践</span> <span class="arrow down"></span></button> <button type="button" aria-label="最佳实践" class="mobile-dropdown-title"><span class="title">最佳实践</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/FrontNotes/ui_optimize/" class="nav-link">
+  用户界面优化
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/performance_optimize/" class="nav-link">
+  性能优化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_HTML/" class="nav-link">
+  面试题_HTML
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_CSS/" class="nav-link">
+  面试题_CSS
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_JS/" class="nav-link">
+  面试题_JS
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_Vue/" class="nav-link">
+  面试题_Vue
+</a></li><li class="dropdown-item"><!----> <a href="/FrontNotes/interview_questions_network/" class="nav-link">
+  面试题_计算机网络
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/mkDlufop/FrontNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Vuex</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontNotes/vue_vuex/#vuex" class="sidebar-link">Vuex</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontNotes/vue_vuex/#概念" class="sidebar-link">概念</a></li><li class="sidebar-sub-header"><a href="/FrontNotes/vue_vuex/#何时使用" class="sidebar-link">何时使用？</a></li><li class="sidebar-sub-header"><a href="/FrontNotes/vue_vuex/#搭建-vuex-环境" class="sidebar-link">搭建 Vuex 环境</a></li><li class="sidebar-sub-header"><a href="/FrontNotes/vue_vuex/#基本使用" class="sidebar-link">基本使用</a></li><li class="sidebar-sub-header"><a href="/FrontNotes/vue_vuex/#getters-的使用" class="sidebar-link">getters 的使用</a></li><li class="sidebar-sub-header"><a href="/FrontNotes/vue_vuex/#四个-map-方法的使用" class="sidebar-link">四个 map 方法的使用</a></li><li class="sidebar-sub-header"><a href="/FrontNotes/vue_vuex/#模块化-命名空间" class="sidebar-link">模块化+命名空间</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p></p><div class="table-of-contents"><ul><li><a href="#vuex">Vuex</a><ul><li><a href="#概念">概念</a></li><li><a href="#何时使用">何时使用？</a></li><li><a href="#搭建-vuex-环境">搭建 Vuex 环境</a></li><li><a href="#基本使用">基本使用</a></li><li><a href="#getters-的使用">getters 的使用</a></li><li><a href="#四个-map-方法的使用">四个 map 方法的使用</a></li><li><a href="#模块化-命名空间">模块化+命名空间</a></li></ul></li></ul></div><p></p> <h2 id="vuex"><a href="#vuex" class="header-anchor">#</a> Vuex</h2> <h3 id="概念"><a href="#概念" class="header-anchor">#</a> 概念</h3> <p>在 Vue 中实现集中式状态（数据）管理的一个 Vue 插件，对 Vue 应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p> <p><img src="/FrontNotes/assets/img/vuex.1f662ff1.png" alt="vuex"></p> <h3 id="何时使用"><a href="#何时使用" class="header-anchor">#</a> 何时使用？</h3> <p><strong>多个组件需要共享数据时。</strong></p> <h3 id="搭建-vuex-环境"><a href="#搭建-vuex-环境" class="header-anchor">#</a> 搭建 Vuex 环境</h3> <ol><li><p>创建文件：<code>src/store/index.js</code></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 引入 Vue</span>
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token comment">// 引入 Vuex</span>
+<span class="token keyword">import</span> Vuex <span class="token keyword">from</span> <span class="token string">'vuex'</span>
+<span class="token comment">// 应用 Vuex 插件</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Vuex<span class="token punctuation">)</span>
+
+<span class="token comment">// 准备 actions 对象--响应组件中用户的动作</span>
+<span class="token keyword">const</span> actions <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token comment">// 准备 mutations 对象--修改 state 中的数据</span>
+<span class="token keyword">const</span> mutations <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token comment">// 准备 state 对象--保存具体的数据</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// 创建并暴露 store</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    actions<span class="token punctuation">,</span>
+    mutations<span class="token punctuation">,</span>
+    state
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div></li> <li><p>在 main.js 中创建 vm 时传入 store 配置项（ Vue 的实例对象被简称为 vm ）。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">...</span><span class="token operator">...</span>
+<span class="token comment">// 引入 store</span>
+<span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">'./store'</span>
+<span class="token operator">...</span><span class="token operator">...</span>
+
+<span class="token comment">// 创建 vm</span>
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=&gt;</span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    store<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ol> <h3 id="基本使用"><a href="#基本使用" class="header-anchor">#</a> 基本使用</h3> <ol><li><p>初始化数据、配置 actions、配置 mutations，操作 store.js。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 引入 Vue 核心库</span>
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token comment">// 引入 Vuex</span>
+<span class="token keyword">import</span> Vuex <span class="token keyword">from</span> <span class="token string">'vuex'</span>
+<span class="token comment">// 应用 Vuex 插件</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Vuex<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> actions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 响应组件中加的动作</span>
+    <span class="token function">jia</span><span class="token punctuation">(</span><span class="token parameter">context<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'JIA'</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> mutations <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 执行加</span>
+    <span class="token constant">JIA</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        state<span class="token punctuation">.</span>num <span class="token operator">+=</span> value<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 初始化数据</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">sum</span><span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 创建并暴露 store</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    actions<span class="token punctuation">,</span>
+    mutations<span class="token punctuation">,</span>
+    state<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>组件中读取 Vuex 中的数据：<code>$store.state.sum</code></p></li> <li><p>组件中修改 Vuex 中的数据：<code>$store.dispatch(’actions 中的方法名’, 数据）</code> 或 <code>$store.commit(’mutations 中的方法名’, 数据）</code></p> <blockquote><p>备注：若没有网络请求或其他业务逻辑，组件中也可以越过 actions，即不写 dispatch，直接编写 commit。</p></blockquote></li></ol> <h3 id="getters-的使用"><a href="#getters-的使用" class="header-anchor">#</a> getters 的使用</h3> <ol><li><p>概念：当 state 中的数据需要经过加工后再使用时，可以使用 <code>getters</code> 加工。</p></li> <li><p>在 <code>store.js</code> 中追加 <code>getters</code> 配置。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">...</span><span class="token operator">...</span>
+
+<span class="token keyword">const</span> getters <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function">bigSum</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> state<span class="token punctuation">.</span>sum <span class="token operator">*</span> <span class="token number">10</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 创建并暴露 store</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token operator">...</span>
+    getters
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>组件中读取数据：<code>$store.getters.bigSum</code>。</p></li></ol> <h3 id="四个-map-方法的使用"><a href="#四个-map-方法的使用" class="header-anchor">#</a> 四个 map 方法的使用</h3> <ol><li><p><code>mapState</code> 方法：用于帮助我们映射 <code>state</code> 中的数据为计算属性。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 借助 mapState 生成计算属性， sum、school、subject（对象写法）</span>
+    <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token comment">// 使用箭头函数</span>
+        <span class="token function-variable function">sum</span><span class="token operator">:</span> <span class="token parameter">state</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>sum<span class="token punctuation">,</span> 
+
+        <span class="token comment">// 传字符串参数 'school' 等同于 `state =&gt; state.school`</span>
+        <span class="token literal-property property">school</span><span class="token operator">:</span> <span class="token string">'school'</span><span class="token punctuation">,</span> 
+
+        <span class="token comment">// 为了能够使用 `this` 获取局部状态，必须使用常规函数</span>
+        <span class="token function">subjectNum</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> state<span class="token punctuation">.</span>subject <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+ 
+    <span class="token comment">// 借助 mapState 生成计算属性， sum、school、subject（数组写法）</span>
+    <span class="token comment">//        映射 this.sum 为 store.state.sum</span>
+    <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token string">'sum'</span><span class="token punctuation">,</span> <span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token string">'subject'</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div></li> <li><p><code>mapGetters</code> 方法：用于帮助我们映射 <code>getters</code> 中的数据为计算属性。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 借助 mapGetters 生成计算属性：bigSum（对象写法）</span>
+    <span class="token comment">//       把 `this.bigSum` 映射为 `this.$store.getters.bigSum`</span>
+    <span class="token operator">...</span><span class="token function">mapGetters</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">bigSum</span><span class="token operator">:</span> <span class="token string">'bigSum'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 借助 mapGetters 生成计算属性， bigSum（数组写法）</span>
+    <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token string">'bigSum'</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p><code>mapActions</code> 方法：用于帮助我们生成与 <code>actions</code> 对话的方法，即：包含 <code>$store.dispatch(xxx)</code> 的函数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 靠 mapActions 生成，incrementOdd、incrementWait（对象形式）</span>
+    <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">incrementOdd</span><span class="token operator">:</span> <span class="token string">'jiaOdd'</span><span class="token punctuation">,</span> <span class="token literal-property property">incrementWait</span><span class="token operator">:</span> <span class="token string">'jiaWait'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 靠 mapActions 生成，incrementOdd、incrementWait（数组形式）</span>
+    <span class="token operator">...</span><span class="token function">mapActinos</span><span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token string">'jiaOdd'</span><span class="token punctuation">,</span> <span class="token string">'jiaWait'</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p><code>mapMutations</code> 方法：用于帮助我们生成与 <code>mutations</code> 对话的方法，即：包含 <code>$store.commit(xxx)</code> 的函数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 靠 mapMutations 生成，increment、decrement（对象形式）</span>
+    <span class="token operator">...</span><span class="token function">mapMutations</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">increment</span><span class="token operator">:</span> <span class="token string">'JIA'</span><span class="token punctuation">,</span> <span class="token literal-property property">decrement</span><span class="token operator">:</span> <span class="token string">'JIAN'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 靠 mapMutations 生成，JIA、JIAN（数组形式）</span>
+    <span class="token operator">...</span><span class="token function">mapMutations</span><span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token string">'JIA'</span><span class="token punctuation">,</span> <span class="token string">'JIAN'</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>备注：mapActions 和 mapMutations 使用时，若需要传递参数，需要在模板中绑定事件时传递好参数，否则参数是事件对象。</p></blockquote></li></ol> <h3 id="模块化-命名空间"><a href="#模块化-命名空间" class="header-anchor">#</a> 模块化+命名空间</h3> <ol><li><p>目的：让代码更好维护，让多种数据分类更加明确。</p></li> <li><p>修改 <code>store.js</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> countAbout <span class="token operator">=</span> <span class="token punctuation">{</span>
+     <span class="token literal-property property">namespaced</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 开启命名空间</span>
+     <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+         <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+     <span class="token punctuation">}</span><span class="token punctuation">,</span>
+     <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+     <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+     <span class="token literal-property property">getters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+         <span class="token function">bigSum</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             <span class="token keyword">return</span> state<span class="token punctuation">.</span>sum <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+     <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> personAbout <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">namespaced</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 开启命名空间</span>
+    <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">getters</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">modules</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        countAbout<span class="token punctuation">,</span>
+        personAbout
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><blockquote><p>当模块带有命名空间后，它的所有 getters、actions 和 mutations 都会自动根据模块注册的路径调整命名。所以开启命名空间的模块中的 getters、actions 和 mutations 的使用方式都会改变；但是开启命名空间和不开启命名空间的模块中的 state 的使用方式不会改变，格式依然是 <code>store.state. 模块名。状态名</code>。</p></blockquote></li> <li><p>开启命名空间后，组件中读取 state 数据：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 方式一：自己直接读取</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>personAbout<span class="token punctuation">.</span>list
+<span class="token comment">// 方式二：借助 mapState 读取</span>
+<span class="token comment">//   将模块的空间名称字符串作为第一个参传递给辅助函数，这所有的绑定都会自动将该模块作为上下文</span>
+<span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token string">'countAbout'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'sum'</span><span class="token punctuation">,</span> <span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token string">'subject'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</code></pre></div></li> <li><p>开启命名空间后，组件中读取 getters 数据：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 方式一：自己直接读取</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span>getters<span class="token punctuation">[</span><span class="token string">'personAbout/firstPersonName'</span><span class="token punctuation">]</span>
+<span class="token comment">// 方式二：借助 mapGetters 读取</span>
+<span class="token operator">...</span><span class="token function">mapGetters</span><span class="token punctuation">(</span><span class="token string">'countAbout'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'bigSum'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</code></pre></div></li> <li><p>开启命名空间后，组件中调用 dispatch：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 方式一：自己直接调用 dispatch</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'personAbout/firstPersonName'</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span>
+<span class="token comment">// 方式二：借助 mapActions</span>
+<span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token string">'countAbout'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">incrementOdd</span><span class="token operator">:</span> <span class="token string">'jiaOdd'</span><span class="token punctuation">,</span> <span class="token literal-property property">incrementWait</span><span class="token operator">:</span> <span class="token string">'jiaWait'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>开启命名空间后，组件中调用 commit：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 方式一：自己直接调用 commit</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'personAbout/ADD_PERSON'</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span>
+<span class="token comment">// 方式二：借助 mapMutations</span>
+<span class="token operator">...</span><span class="token function">mapMutations</span><span class="token punctuation">(</span><span class="token string">'countAbout'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">increment</span><span class="token operator">:</span> <span class="token string">'JIA'</span><span class="token punctuation">,</span> <span class="token literal-property property">decrement</span><span class="token operator">:</span> <span class="token string">'JIAN'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ol></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FrontNotes/assets/js/app.8797468b.js" defer></script><script src="/FrontNotes/assets/js/2.812b2437.js" defer></script><script src="/FrontNotes/assets/js/12.6dd6cba5.js" defer></script>
+  </body>
+</html>
