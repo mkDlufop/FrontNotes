@@ -13,6 +13,19 @@ permalink: /vue3/
 4. setup 函数的两种返回值：
    1. 若返回一个对象，则对象中的属性、方法，在模板中均可以直接使用。（重点关注）
    2. 若返回一个渲染函数：则可以自定义渲染内容。（了解）
+
+       ```js
+       import { h } from "vue";
+
+       export default {
+        name: "App";
+
+        setup() {
+          return () => h("h1", "setup 返回一个渲染函数。");
+        }
+       }
+       ```
+
 5. 注意：
    1. 尽量不要与 Vue2.x 配置混用
       - Vue2.x 配置（data、methods、computed...）中**可以访问到** setup 中的属性、方法。

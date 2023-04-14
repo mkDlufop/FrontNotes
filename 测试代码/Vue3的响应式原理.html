@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+  <head></head>
+  <body>
+    <script>
+      let person = {
+        name: "zhang",
+      };
+
+      // 模拟 Vue3 中实现响应式
+      const p = new Proxy(person,{
+        get(target, propName) {
+          console.log(`读取 p 上的${propName}属性。`);
+          // return target[propName];
+          // 使用 Reflect 的优势在于，即使该行代码执行错误，也不会影响后面代码的执行
+          return Reflect.get(target, propName);
+        },
+        set(target, propName, value) {
+          console.log(`修改${propName}属性，更新中。。。`);
+          // person[propName] = value;
+          Reflect.set(target, propName, value);
+        },
+        delete(target, propName) {
+          console.log(`删除${propName}属性，更新中。。。`);
+          // return delete target[propName]
+          return Reflect.deleteProperty(target, propName);
+        }
+      });
+    </script>
+  </body>
+</html>
